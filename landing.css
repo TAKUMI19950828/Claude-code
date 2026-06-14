@@ -392,9 +392,9 @@ code {
 .story-stage {
   position: relative;
   display: flex;
-  align-items: stretch;
-  gap: clamp(16px, 3vw, 36px);
-  padding: clamp(24px, 4vw, 48px);
+  flex-direction: column;
+  gap: clamp(24px, 4vw, 40px);
+  padding: clamp(28px, 5vw, 56px) clamp(18px, 4vw, 48px) 0;
   border-radius: var(--radius);
   overflow: hidden;
   border: 4px solid white;
@@ -406,12 +406,11 @@ code {
 .story-text {
   position: relative;
   z-index: 2;
-  flex: 1 1 58%;
-  padding: clamp(22px, 3vw, 40px);
+  width: 100%;
+  padding: clamp(24px, 4vw, 42px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 14px;
+  gap: 15px;
   text-align: left;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.84);
@@ -440,19 +439,17 @@ code {
 .story-figures {
   position: relative;
   z-index: 1;
-  flex: 1 1 38%;
-  align-self: flex-end;
-  height: clamp(280px, 38vw, 460px);
+  width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: clamp(2px, 1.5vw, 14px);
+  gap: clamp(4px, 2vw, 32px);
   pointer-events: none;
 }
 .story-fig {
-  height: 100%;
+  height: clamp(240px, 32vw, 460px);
   width: auto;
-  max-width: 36%;
+  max-width: 32%;
   object-fit: contain;
   object-position: bottom;
   filter: drop-shadow(0 8px 18px rgba(124, 76, 137, 0.3));
@@ -811,13 +808,11 @@ body.lightbox-open { overflow: hidden; }
     order: initial;
   }
   .char-spotlight-portrait { max-width: 360px; margin: 0 auto; width: 100%; }
-  .story-stage { flex-direction: column; align-items: stretch; }
-  .story-text { flex: none; }
-  .story-figures { flex: none; align-self: center; width: 100%; height: clamp(160px, 38vw, 300px); }
 }
 @media (max-width: 720px) {
   .nav-links { display: none; }
   .char-gallery-grid { grid-template-columns: 1fr; }
+  .story-fig { height: clamp(150px, 34vw, 280px); }
 }
 
 /* ===== アクセシビリティ：アニメーション抑制 ===== */
