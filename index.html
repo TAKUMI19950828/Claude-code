@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#ff8fba" />
+    <title>しょうぎむすめ！ ｜ かわいい3人と遊ぶ美少女将棋ゲーム公式サイト</title>
+    <meta
+      name="description"
+      content="「しょうぎむすめ！（盤上ノ一手）」公式紹介サイト。エルル・ミウ・リリカ、3人のかわいいライバルと指す、ブラウザだけで遊べる一人用COM対戦将棋。勝てば特別なご褒美イベントが解放！"
+    />
+    <meta property="og:title" content="しょうぎむすめ！ ｜ 美少女将棋ゲーム" />
+    <meta
+      property="og:description"
+      content="かわいい3人のライバルと真剣勝負。ブラウザだけで遊べる一人用COM対戦将棋「しょうぎむすめ！」公式紹介サイト。"
+    />
+    <meta property="og:type" content="website" />
+    <link rel="stylesheet" href="landing.css" />
+  </head>
+  <body>
+    <!-- ふわふわ舞う背景の装飾（桜＆将棋駒） -->
+    <div class="petal-field" aria-hidden="true"></div>
+
+    <!-- ナビゲーション -->
+    <header class="site-nav" id="top">
+      <a class="nav-logo" href="#top">
+        <span class="nav-logo-mark">歩</span>
+        <span class="nav-logo-text">しょうぎむすめ！</span>
+      </a>
+      <nav class="nav-links" aria-label="セクション">
+        <a href="#about">ゲーム紹介</a>
+        <a href="#characters">キャラクター</a>
+        <a href="#features">特徴</a>
+        <a href="#systems">システム</a>
+        <a href="#howto">あそびかた</a>
+      </nav>
+      <a class="nav-cta" href="#characters">3人に会う ♥</a>
+    </header>
+
+    <main>
+      <!-- ヒーロー -->
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="hero-kicker">BROWSER SHOGI × CUTE GIRLS</p>
+            <h1 id="heroTitle" class="hero-title">
+              <span class="hero-title-main">しょうぎむすめ！</span>
+              <span class="hero-title-sub">― 盤上ノ一手 ―</span>
+            </h1>
+            <p class="hero-lead">
+              かわいい3人の女の子と指す、<br />
+              ブラウザだけで遊べる<strong>一人用COM対戦将棋</strong>。
+            </p>
+            <p class="hero-text">
+              初級・中級・上級、個性ゆたかなライバルと真剣勝負。<br />
+              勝てば二人だけの<strong>特別なご褒美イベント</strong>が解放されます。
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#characters">▶ キャラクターを見る</a>
+              <a class="btn btn-ghost" href="#howto">あそびかた</a>
+            </div>
+            <ul class="hero-pieces" aria-hidden="true">
+              <li>歩</li><li>香</li><li>桂</li><li>銀</li><li>金</li><li>角</li><li>飛</li><li>龍</li>
+            </ul>
+          </div>
+
+          <!-- キービジュアル（実画像があれば表示／なければCSSの3人パネル） -->
+          <div class="hero-visual">
+            <figure class="key-visual">
+              <img
+                src="assets/characters/title-ensemble.webp"
+                alt="エルル・ミウ・リリカが将棋盤を囲むタイトルイラスト"
+                loading="eager"
+                onerror="this.classList.add('img-missing')"
+              />
+              <div class="kv-fallback" aria-hidden="true">
+                <div class="kv-orb e"><b>歩</b><span>エルル</span></div>
+                <div class="kv-orb m"><b>銀</b><span>ミウ</span></div>
+                <div class="kv-orb r"><b>龍</b><span>リリカ</span></div>
+                <div class="kv-board">
+                  <span>9×9</span>
+                  <small>SHOGI BOARD</small>
+                </div>
+                <p class="kv-note">★ あなたの先手から、対局がはじまる ★</p>
+              </div>
+            </figure>
+          </div>
+        </div>
+
+        <!-- 数字で見る -->
+        <ul class="hero-stats" aria-label="ゲームのみどころ">
+          <li><b>3</b><span>人のライバル</span></li>
+          <li><b>3</b><span>段階のCOM思考</span></li>
+          <li><b>27</b><span>のご褒美イベント</span></li>
+          <li><b>♪</b><span>BGM＆ボイス</span></li>
+        </ul>
+      </section>
+
+      <!-- ゲーム紹介 -->
+      <section class="section about" id="about" aria-labelledby="aboutTitle">
+        <p class="section-kicker">ABOUT THE GAME</p>
+        <h2 class="section-title" id="aboutTitle">どんなゲーム？</h2>
+        <p class="section-lead">
+          インストール不要。<code>index.html</code> をブラウザで開くだけで、いつでも将棋が楽しめます。
+          ルールを覚えたての初心者から、本格的な詰みを狙う上級者まで。
+          かわいいライバルたちが、あなたの「もう一局！」を待っています。
+        </p>
+        <div class="about-grid">
+          <article class="about-card">
+            <span class="about-emoji">🌸</span>
+            <h3>かわいい3人と対局</h3>
+            <p>元気なエルル、知性派ミウ、天才リリカ。声と表情ゆたかなライバルが盤上を彩ります。</p>
+          </article>
+          <article class="about-card">
+            <span class="about-emoji">♟️</span>
+            <h3>本格の将棋ルール</h3>
+            <p>成り・持ち駒・二歩禁止・王手・詰み判定まで実装。将棋としてしっかり遊べます。</p>
+          </article>
+          <article class="about-card">
+            <span class="about-emoji">💖</span>
+            <h3>勝利のご褒美イベント</h3>
+            <p>勝つたびに親密度が深まり、デートやストーリーが解放。集めて埋めるギャラリーも。</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- キャラクター -->
+      <section class="section characters" id="characters" aria-labelledby="charTitle">
+        <p class="section-kicker">CHOOSE YOUR CUTE RIVAL</p>
+        <h2 class="section-title" id="charTitle">3人のライバル</h2>
+        <p class="section-lead">
+          難易度はそのまま、3人の個性。お気に入りの一人を見つけてください。
+        </p>
+
+        <div class="char-grid">
+          <!-- エルル -->
+          <article class="char-card" style="--c:#ff8fba; --c-dark:#e96199;">
+            <div class="char-portrait">
+              <img
+                src="assets/characters/eruru.webp"
+                alt="エルルの立ち絵"
+                loading="lazy"
+                onerror="this.classList.add('img-missing')"
+              />
+              <div class="portrait-fallback" aria-hidden="true"><b>歩</b></div>
+              <span class="char-level">初級</span>
+              <span class="char-piece" aria-hidden="true">歩</span>
+            </div>
+            <div class="char-body">
+              <p class="char-title-jp">にこにこ歩のプリンセス</p>
+              <h3 class="char-name">エルル</h3>
+              <p class="char-charm">笑顔と元気で盤上をぱっと明るくする、みんなの妹系ライバル！</p>
+              <blockquote class="char-quote">「エルルだよ！ いっしょに楽しく指そうね♪」</blockquote>
+              <dl class="char-profile">
+                <div><dt>誕生日</dt><dd>4月10日</dd></div>
+                <div><dt>好きなもの</dt><dd>いちごパフェ・桜</dd></div>
+                <div><dt>苦手なもの</dt><dd>むずかしい早口言葉</dd></div>
+                <div><dt>趣味</dt><dd>かわいい駒袋集め</dd></div>
+                <div><dt>将来の夢</dt><dd>みんなを笑顔にする棋士</dd></div>
+                <div><dt>お気に入りの駒</dt><dd>歩</dd></div>
+              </dl>
+              <p class="char-style"><span>将棋スタイル</span>元気な攻めと素直な駒組み。歩を大切にしながら、チャンスには思いきって前へ出る。</p>
+            </div>
+          </article>
+
+          <!-- ミウ -->
+          <article class="char-card" style="--c:#3fc5bd; --c-dark:#2a9b94;">
+            <div class="char-portrait">
+              <img
+                src="assets/characters/miu.webp"
+                alt="ミウの立ち絵"
+                loading="lazy"
+                onerror="this.classList.add('img-missing')"
+              />
+              <div class="portrait-fallback" aria-hidden="true"><b>銀</b></div>
+              <span class="char-level">中級</span>
+              <span class="char-piece" aria-hidden="true">銀</span>
+            </div>
+            <div class="char-body">
+              <p class="char-title-jp">きらめき銀のアイドル</p>
+              <h3 class="char-name">ミウ</h3>
+              <p class="char-charm">爽やかな笑顔の奥でしっかり作戦を練る、知性派アイドル棋士！</p>
+              <blockquote class="char-quote">「ミウと本気の勝負、してみる？ よろしくね！」</blockquote>
+              <dl class="char-profile">
+                <div><dt>誕生日</dt><dd>7月22日</dd></div>
+                <div><dt>好きなもの</dt><dd>ラムネ・水族館</dd></div>
+                <div><dt>苦手なもの</dt><dd>予定外のハプニング</dd></div>
+                <div><dt>趣味</dt><dd>詰将棋と写真</dd></div>
+                <div><dt>将来の夢</dt><dd>将棋アイドル日本一</dd></div>
+                <div><dt>お気に入りの駒</dt><dd>銀</dd></div>
+              </dl>
+              <p class="char-style"><span>将棋スタイル</span>駒得とバランスを重視する知性派。銀を中心に、きれいな連携でじわじわ優位を広げる。</p>
+            </div>
+          </article>
+
+          <!-- リリカ -->
+          <article class="char-card" style="--c:#a77bea; --c-dark:#8857d4;">
+            <div class="char-portrait">
+              <img
+                src="assets/characters/ririka.webp"
+                alt="リリカの立ち絵"
+                loading="lazy"
+                onerror="this.classList.add('img-missing')"
+              />
+              <div class="portrait-fallback" aria-hidden="true"><b>龍</b></div>
+              <span class="char-level">上級</span>
+              <span class="char-piece" aria-hidden="true">龍</span>
+            </div>
+            <div class="char-body">
+              <p class="char-title-jp">星空の天才りゅう姫</p>
+              <h3 class="char-name">リリカ</h3>
+              <p class="char-charm">星のようなきらめきと小悪魔な微笑みで魅了する、天才お姫さま！</p>
+              <blockquote class="char-quote">「リリカの星読み将棋、受けてみる？」</blockquote>
+              <dl class="char-profile">
+                <div><dt>誕生日</dt><dd>12月12日</dd></div>
+                <div><dt>好きなもの</dt><dd>星空・紅茶・宝石</dd></div>
+                <div><dt>苦手なもの</dt><dd>読みを外すこと</dd></div>
+                <div><dt>趣味</dt><dd>天体観測と占い</dd></div>
+                <div><dt>将来の夢</dt><dd>伝説に残る女流棋士</dd></div>
+                <div><dt>お気に入りの駒</dt><dd>龍</dd></div>
+              </dl>
+              <p class="char-style"><span>将棋スタイル</span>盤面全体を読む本格派。角と飛車の長い利きを使い、星を描くような鋭い寄せを狙う。</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 特徴 -->
+      <section class="section features" id="features" aria-labelledby="featTitle">
+        <p class="section-kicker">GAME FEATURES</p>
+        <h2 class="section-title" id="featTitle">充実の機能</h2>
+        <p class="section-lead">本格的な将棋エンジンと、心ときめく演出。その両方を一つの画面に。</p>
+        <div class="feature-grid">
+          <article class="feature-card"><span class="feature-icon">🧠</span><h3>難易度別COM思考</h3><p>気まぐれな初級、駒得を読む中級、相手の応手まで読む上級。3段階の手応え。</p></article>
+          <article class="feature-card"><span class="feature-icon">🎨</span><h3>オリジナル立ち絵</h3><p>3人それぞれの対局専用全身イラストと、思わずどきっとする敗北表情も。</p></article>
+          <article class="feature-card"><span class="feature-icon">💞</span><h3>ご褒美デートイベント</h3><p>勝利するたびに親密度がアップ。お弁当から告白、結婚式まで全27話。</p></article>
+          <article class="feature-card"><span class="feature-icon">🖼️</span><h3>思い出ギャラリー</h3><p>解放したイベントを保存。いつでも見返せる、二人だけのアルバム。</p></article>
+          <article class="feature-card"><span class="feature-icon">♟️</span><h3>全駒の移動と成り</h3><p>歩から飛車まで全駒に対応。成り・不成も自分で選択できます。</p></article>
+          <article class="feature-card"><span class="feature-icon">🤝</span><h3>駒取りと持ち駒</h3><p>取った駒は持ち駒に。空き升へ打って、攻めも受けも自由自在。</p></article>
+          <article class="feature-card"><span class="feature-icon">⚖️</span><h3>反則の禁止判定</h3><p>二歩・行き所のない駒打ち・王手放置をしっかりチェック。</p></article>
+          <article class="feature-card"><span class="feature-icon">👑</span><h3>王手・詰みの判定</h3><p>王手と詰みを自動で判定。最後の一手まで気が抜けません。</p></article>
+          <article class="feature-card"><span class="feature-icon">🔊</span><h3>Web Audio演出</h3><p>駒の着手音、シーン別BGM、キャラクターボイスで臨場感アップ。</p></article>
+          <article class="feature-card"><span class="feature-icon">📱</span><h3>スマートフォン対応</h3><p>キュートでPOPなレスポンシブUI。スマホでも快適にタップ操作。</p></article>
+        </div>
+      </section>
+
+      <!-- ゲームシステム -->
+      <section class="section systems" id="systems" aria-labelledby="sysTitle">
+        <p class="section-kicker">GAME SYSTEMS</p>
+        <h2 class="section-title" id="sysTitle">遊びごたえのシステム</h2>
+        <p class="section-lead">対局だけじゃない。きらきらの“マイルーム体験”が待っています。</p>
+        <div class="system-grid">
+          <article class="system-card"><h3>🏠 ホーム画面</h3><p>お気に入りのキャラと背景でお出迎え。解放した画像は左右ボタンで自由に切り替え。</p></article>
+          <article class="system-card"><h3>📖 ストーリー</h3><p>対局に勝つほど解放される、3人それぞれの物語。最新話をいつでも読み返せます。</p></article>
+          <article class="system-card"><h3>🛍️ ショップ</h3><p><b>ときめきコイン</b>で限定BGM・イベント・背景画像を購入。全14種のアイテム。</p></article>
+          <article class="system-card"><h3>🎯 ミッション</h3><p>初対局やギャラリー閲覧など、達成でコインGET。毎日のログインボーナスも。</p></article>
+          <article class="system-card"><h3>🪪 キャラクタールーム</h3><p>誕生日・好きなもの・将棋スタイルまで、3人のプロフィールをじっくり閲覧。</p></article>
+          <article class="system-card"><h3>⚙️ 設定</h3><p>音声・BGMのON/OFFやホームイベント画像の切り替えを自由にカスタマイズ。</p></article>
+        </div>
+      </section>
+
+      <!-- あそびかた -->
+      <section class="section howto" id="howto" aria-labelledby="howTitle">
+        <p class="section-kicker">HOW TO PLAY</p>
+        <h2 class="section-title" id="howTitle">あそびかた</h2>
+        <p class="section-lead">むずかしい操作はなし。あなたは先手、COMは後手です。</p>
+        <ol class="step-list">
+          <li class="step"><span class="step-no">1</span><div><h3>対戦相手を選ぶ</h3><p>初級・中級・上級から、今日のライバルを選びましょう。</p></div></li>
+          <li class="step"><span class="step-no">2</span><div><h3>駒を動かす</h3><p>盤上の駒を選ぶと、光る移動先が表示されます。行きたいマスをタップ。</p></div></li>
+          <li class="step"><span class="step-no">3</span><div><h3>持ち駒を打つ</h3><p>持ち駒を選び、表示された空き升へ。攻守の切り替えはここから。</p></div></li>
+          <li class="step"><span class="step-no">4</span><div><h3>成る／成らない</h3><p>成れる場所では「成る」「成らない」を選択。狙いに合わせて。</p></div></li>
+          <li class="step"><span class="step-no">5</span><div><h3>詰ませて勝利！</h3><p>相手の王を詰ませれば勝利。特別なご褒美イベントが解放されます。</p></div></li>
+        </ol>
+        <div class="howto-cta">
+          <a class="btn btn-primary" href="#characters">▶ ライバルをもう一度見る</a>
+          <p class="howto-note">※ ゲーム本体の <code>index.html</code> をブラウザで開くとプレイできます。</p>
+        </div>
+      </section>
+    </main>
+
+    <!-- フッター -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-logo"><span class="nav-logo-mark">歩</span> しょうぎむすめ！</p>
+        <p class="footer-sub">盤上ノ一手 ― ブラウザだけで遊べる、一人用COM対戦将棋</p>
+        <p class="footer-note">
+          ※ 現バージョンでは「打ち歩詰めの禁止」と「千日手判定」は未実装です。
+        </p>
+        <p class="footer-copy">© しょうぎむすめ！ ／ このページはゲームの紹介用サイトです。</p>
+      </div>
+    </footer>
+
+    <a class="back-to-top" href="#top" aria-label="ページの先頭へ戻る">▲</a>
+
+    <script src="landing.js"></script>
+  </body>
+</html>
