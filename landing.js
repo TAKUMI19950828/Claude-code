@@ -29,7 +29,7 @@
   // ===== スクロールで要素をふわっと表示 =====
   function setupReveal() {
     const targets = document.querySelectorAll(
-      ".about-card, .char-card, .feature-card, .system-card, .step, .hero-stats li"
+      ".about-card, .char-spotlight, .feature-card, .system-card, .step, .hero-stats li"
     );
     if (reduceMotion || !("IntersectionObserver" in window)) {
       targets.forEach((el) => el.classList.add("in"));
@@ -85,10 +85,57 @@
     map.forEach((_, section) => observer.observe(section));
   }
 
+  // ===== ご褒美CGギャラリーのライトボックス =====
+  function setupLightbox() {
+    const items = document.querySelectorAll(".char-gallery-item");
+    if (!items.length) return;
+
+    const overlay = document.createElement("div");
+    overlay.className = "lightbox";
+    overlay.innerHTML = `
+      <div class="lightbox-inner">
+        <button type="button" class="lightbox-close" aria-label="閉じる">×</button>
+        <img class="lightbox-img" src="" alt="" />
+        <p class="lightbox-caption"></p>
+      </div>`;
+    document.body.appendChild(overlay);
+
+    const img = overlay.querySelector(".lightbox-img");
+    const caption = overlay.querySelector(".lightbox-caption");
+    const closeBtn = overlay.querySelector(".lightbox-close");
+
+    function open(item) {
+      const full = item.dataset.full || item.querySelector("img")?.src || "";
+      const alt = item.querySelector("img")?.alt || "";
+      img.src = full;
+      img.alt = alt;
+      caption.textContent = item.dataset.caption || alt;
+      overlay.classList.add("show");
+      document.body.classList.add("lightbox-open");
+    }
+    function close() {
+      overlay.classList.remove("show");
+      document.body.classList.remove("lightbox-open");
+      img.src = "";
+    }
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => open(item));
+    });
+    closeBtn.addEventListener("click", close);
+    overlay.addEventListener("click", (event) => {
+      if (event.target === overlay) close();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") close();
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     spawnPetals();
     setupReveal();
     setupBackToTop();
     setupNavHighlight();
+    setupLightbox();
   });
 })();

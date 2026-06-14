@@ -38,54 +38,54 @@
     </header>
 
     <main>
+      <!-- フルワイドのキービジュアル -->
+      <div class="hero-banner">
+        <img
+          src="assets/characters/title-ensemble.webp"
+          alt="エルル・ミウ・リリカが将棋盤を囲むタイトルイラスト"
+          class="hero-banner-img"
+          loading="eager"
+          onerror="this.classList.add('img-missing')"
+        />
+        <div class="hero-banner-fallback" aria-hidden="true">
+          <div class="kv-orb e"><b>歩</b><span>エルル</span></div>
+          <div class="kv-orb m"><b>銀</b><span>ミウ</span></div>
+          <div class="kv-orb r"><b>龍</b><span>リリカ</span></div>
+        </div>
+        <div class="hero-banner-veil" aria-hidden="true"></div>
+      </div>
+
       <!-- ヒーロー -->
       <section class="hero" aria-labelledby="heroTitle">
         <div class="hero-glow" aria-hidden="true"></div>
         <div class="hero-inner">
-          <div class="hero-copy">
-            <p class="hero-kicker">BROWSER SHOGI × CUTE GIRLS</p>
-            <h1 id="heroTitle" class="hero-title">
-              <span class="hero-title-main">しょうぎむすめ！</span>
-              <span class="hero-title-sub">― 盤上ノ一手 ―</span>
-            </h1>
-            <p class="hero-lead">
-              かわいい3人の女の子と指す、<br />
-              ブラウザだけで遊べる<strong>一人用COM対戦将棋</strong>。
-            </p>
-            <p class="hero-text">
-              初級・中級・上級、個性ゆたかなライバルと真剣勝負。<br />
-              勝てば二人だけの<strong>特別なご褒美イベント</strong>が解放されます。
-            </p>
-            <div class="hero-actions">
-              <a class="btn btn-primary" href="#characters">▶ キャラクターを見る</a>
-              <a class="btn btn-ghost" href="#howto">あそびかた</a>
-            </div>
-            <ul class="hero-pieces" aria-hidden="true">
-              <li>歩</li><li>香</li><li>桂</li><li>銀</li><li>金</li><li>角</li><li>飛</li><li>龍</li>
-            </ul>
+          <p class="hero-kicker">BROWSER SHOGI × CUTE GIRLS</p>
+          <h1 id="heroTitle" class="hero-title">
+            <img
+              class="hero-logo"
+              src="assets/characters/title-logo.webp"
+              alt="しょうぎむすめ！"
+              loading="eager"
+              onerror="this.classList.add('img-missing')"
+            />
+            <span class="hero-title-main hero-title-fallback">しょうぎむすめ！</span>
+            <span class="hero-title-sub">― 盤上ノ一手 ―</span>
+          </h1>
+          <p class="hero-lead">
+            かわいい3人の女の子と指す、<br />
+            ブラウザだけで遊べる<strong>一人用COM対戦将棋</strong>。
+          </p>
+          <p class="hero-text">
+            初級・中級・上級、個性ゆたかなライバルと真剣勝負。<br />
+            勝てば二人だけの<strong>特別なご褒美イベント</strong>が解放されます。
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#characters">▶ キャラクターを見る</a>
+            <a class="btn btn-ghost" href="#howto">あそびかた</a>
           </div>
-
-          <!-- キービジュアル（実画像があれば表示／なければCSSの3人パネル） -->
-          <div class="hero-visual">
-            <figure class="key-visual">
-              <img
-                src="assets/characters/title-ensemble.webp"
-                alt="エルル・ミウ・リリカが将棋盤を囲むタイトルイラスト"
-                loading="eager"
-                onerror="this.classList.add('img-missing')"
-              />
-              <div class="kv-fallback" aria-hidden="true">
-                <div class="kv-orb e"><b>歩</b><span>エルル</span></div>
-                <div class="kv-orb m"><b>銀</b><span>ミウ</span></div>
-                <div class="kv-orb r"><b>龍</b><span>リリカ</span></div>
-                <div class="kv-board">
-                  <span>9×9</span>
-                  <small>SHOGI BOARD</small>
-                </div>
-                <p class="kv-note">★ あなたの先手から、対局がはじまる ★</p>
-              </div>
-            </figure>
-          </div>
+          <ul class="hero-pieces" aria-hidden="true">
+            <li>歩</li><li>香</li><li>桂</li><li>銀</li><li>金</li><li>角</li><li>飛</li><li>龍</li>
+          </ul>
         </div>
 
         <!-- 数字で見る -->
@@ -133,10 +133,10 @@
           難易度はそのまま、3人の個性。お気に入りの一人を見つけてください。
         </p>
 
-        <div class="char-grid">
+        <div class="char-spotlight-list">
           <!-- エルル -->
-          <article class="char-card" style="--c:#ff8fba; --c-dark:#e96199;">
-            <div class="char-portrait">
+          <article class="char-spotlight" style="--c:#ff8fba; --c-dark:#e96199;">
+            <div class="char-spotlight-portrait">
               <img
                 src="assets/characters/eruru.webp"
                 alt="エルルの立ち絵"
@@ -147,7 +147,7 @@
               <span class="char-level">初級</span>
               <span class="char-piece" aria-hidden="true">歩</span>
             </div>
-            <div class="char-body">
+            <div class="char-spotlight-body">
               <p class="char-title-jp">にこにこ歩のプリンセス</p>
               <h3 class="char-name">エルル</h3>
               <p class="char-charm">笑顔と元気で盤上をぱっと明るくする、みんなの妹系ライバル！</p>
@@ -161,12 +161,36 @@
                 <div><dt>お気に入りの駒</dt><dd>歩</dd></div>
               </dl>
               <p class="char-style"><span>将棋スタイル</span>元気な攻めと素直な駒組み。歩を大切にしながら、チャンスには思いきって前へ出る。</p>
+
+              <div class="char-gallery">
+                <p class="char-gallery-title">♥ ご褒美イベントCG</p>
+                <div class="char-gallery-grid">
+                  <button
+                    type="button"
+                    class="char-gallery-item"
+                    data-full="assets/characters/eruru-cg-1.webp"
+                    data-caption="エルルと浴衣の花火デート（親密度：中）"
+                  >
+                    <img src="assets/characters/eruru-cg-1.webp" alt="エルルと浴衣の花火デート" loading="lazy" />
+                    <span class="gallery-tag">浴衣の花火デート</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="char-gallery-item"
+                    data-full="assets/characters/eruru-cg-2.webp"
+                    data-caption="エルルと桜色のウェディング（親密度：MAX）"
+                  >
+                    <img src="assets/characters/eruru-cg-2.webp" alt="エルルと桜色のウェディング" loading="lazy" />
+                    <span class="gallery-tag">★MAX 桜色のウェディング</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </article>
 
           <!-- ミウ -->
-          <article class="char-card" style="--c:#3fc5bd; --c-dark:#2a9b94;">
-            <div class="char-portrait">
+          <article class="char-spotlight reverse" style="--c:#3fc5bd; --c-dark:#2a9b94;">
+            <div class="char-spotlight-portrait">
               <img
                 src="assets/characters/miu.webp"
                 alt="ミウの立ち絵"
@@ -177,7 +201,7 @@
               <span class="char-level">中級</span>
               <span class="char-piece" aria-hidden="true">銀</span>
             </div>
-            <div class="char-body">
+            <div class="char-spotlight-body">
               <p class="char-title-jp">きらめき銀のアイドル</p>
               <h3 class="char-name">ミウ</h3>
               <p class="char-charm">爽やかな笑顔の奥でしっかり作戦を練る、知性派アイドル棋士！</p>
@@ -191,12 +215,36 @@
                 <div><dt>お気に入りの駒</dt><dd>銀</dd></div>
               </dl>
               <p class="char-style"><span>将棋スタイル</span>駒得とバランスを重視する知性派。銀を中心に、きれいな連携でじわじわ優位を広げる。</p>
+
+              <div class="char-gallery">
+                <p class="char-gallery-title">♥ ご褒美イベントCG</p>
+                <div class="char-gallery-grid">
+                  <button
+                    type="button"
+                    class="char-gallery-item"
+                    data-full="assets/characters/miu-cg-1.webp"
+                    data-caption="ミウと私服の水族館デート（親密度：大）"
+                  >
+                    <img src="assets/characters/miu-cg-1.webp" alt="ミウと私服の水族館デート" loading="lazy" />
+                    <span class="gallery-tag">私服の水族館デート</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="char-gallery-item"
+                    data-full="assets/characters/miu-cg-2.webp"
+                    data-caption="ミウと青い海のウェディング（親密度：MAX）"
+                  >
+                    <img src="assets/characters/miu-cg-2.webp" alt="ミウと青い海のウェディング" loading="lazy" />
+                    <span class="gallery-tag">★MAX 青い海のウェディング</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </article>
 
           <!-- リリカ -->
-          <article class="char-card" style="--c:#a77bea; --c-dark:#8857d4;">
-            <div class="char-portrait">
+          <article class="char-spotlight" style="--c:#a77bea; --c-dark:#8857d4;">
+            <div class="char-spotlight-portrait">
               <img
                 src="assets/characters/ririka.webp"
                 alt="リリカの立ち絵"
@@ -207,7 +255,7 @@
               <span class="char-level">上級</span>
               <span class="char-piece" aria-hidden="true">龍</span>
             </div>
-            <div class="char-body">
+            <div class="char-spotlight-body">
               <p class="char-title-jp">星空の天才りゅう姫</p>
               <h3 class="char-name">リリカ</h3>
               <p class="char-charm">星のようなきらめきと小悪魔な微笑みで魅了する、天才お姫さま！</p>
@@ -221,6 +269,30 @@
                 <div><dt>お気に入りの駒</dt><dd>龍</dd></div>
               </dl>
               <p class="char-style"><span>将棋スタイル</span>盤面全体を読む本格派。角と飛車の長い利きを使い、星を描くような鋭い寄せを狙う。</p>
+
+              <div class="char-gallery">
+                <p class="char-gallery-title">♥ ご褒美イベントCG</p>
+                <div class="char-gallery-grid">
+                  <button
+                    type="button"
+                    class="char-gallery-item"
+                    data-full="assets/characters/ririka-cg-1.webp"
+                    data-caption="リリカと月夜の神社デート（親密度：小）"
+                  >
+                    <img src="assets/characters/ririka-cg-1.webp" alt="リリカと月夜の神社デート" loading="lazy" />
+                    <span class="gallery-tag">月夜の神社デート</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="char-gallery-item"
+                    data-full="assets/characters/ririka-cg-2.webp"
+                    data-caption="リリカと祝福のチャペル（親密度：MAX）"
+                  >
+                    <img src="assets/characters/ririka-cg-2.webp" alt="リリカと祝福のチャペル" loading="lazy" />
+                    <span class="gallery-tag">★MAX 祝福のチャペル</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </article>
         </div>
