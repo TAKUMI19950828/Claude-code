@@ -1,5 +1,5 @@
-// Assemble the PV in two stages (robust against zoompan->xfade CFR issues):
-//  Stage 1: render each scene to a constant-frame-rate mp4 with Ken-Burns zoom.
+// Assemble the PV in two stages:
+//  Stage 1: render each scene to a constant-frame-rate mp4 (static frame, no zoom/pan).
 //  Stage 2: crossfade the scene clips together and add the theme song.
 const { spawnSync } = require("child_process");
 const fs = require("fs");
@@ -12,12 +12,13 @@ const here = __dirname;
 const clipsDir = path.join(here, "clips");
 fs.mkdirSync(clipsDir, { recursive: true });
 
-const durations = [7.0, 7.5, 7.5, 6.5, 7.5, 6.5, 7.5, 6.5, 7.5, 7.5, 8.8, 8.5];
+const durations = [6.0, 7.5, 6.5, 6.5, 7.5, 6.5, 6.5, 7.5, 6.5, 6.5, 6.5, 7.5, 8.1];
 const transitions = [
-  "fade", "fadewhite", "dissolve", "smoothleft", "dissolve",
-  "smoothleft", "dissolve", "fadewhite", "fade", "fadewhite", "fade",
+  "fade", "smoothleft", "dissolve", "fadewhite", "smoothleft",
+  "dissolve", "fadewhite", "smoothleft", "dissolve", "fade", "fade", "fadewhite",
 ];
 const N = durations.length;
+const song = path.join(here, "..", "assets", "characters", "三色チェックメイト！～しょうぎむすめOP主題歌～.mp3");
 
 function run(args, label) {
   const res = spawnSync(ffmpeg, args, { stdio: ["ignore", "pipe", "pipe"] });
@@ -28,25 +29,19 @@ function run(args, label) {
   }
 }
 
-// ---- Stage 1: per-scene clips with zoom ----
+// ---- Stage 1: per-scene static clips (no zoom -> no jitter) ----
 for (let i = 0; i < N; i++) {
   const src = path.join(here, "frames", `f${String(i + 1).padStart(2, "0")}.png`);
   const dst = path.join(clipsDir, `c${String(i + 1).padStart(2, "0")}.mp4`);
-  const DF = Math.round(durations[i] * FPS);
-  const vf =
-    `scale=2400:1350,setsar=1,` +
-    `zoompan=z='1+0.08*on/${DF - 1}':d=${DF}:` +
-    `x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s=1920x1080:fps=${FPS},` +
-    `fps=${FPS},format=yuv420p`;
   if (fs.existsSync(dst) && fs.statSync(dst).size > 0) {
     console.log("clip", i + 1, "skip (exists)");
     continue;
   }
-  // single (non-looped) image: zoompan d=DF sets the TOTAL output frame count
+  // static (non-looped duplication of) a single image, held for the scene duration
   run(
     [
-      "-y", "-i", src, "-vf", vf, "-c:v", "libx264", "-preset", "veryfast",
-      "-crf", "18", "-pix_fmt", "yuv420p", "-r", String(FPS), dst,
+      "-y", "-loop", "1", "-i", src, "-t", String(durations[i]), "-r", String(FPS),
+      "-c:v", "libx264", "-preset", "veryfast", "-crf", "18", "-pix_fmt", "yuv420p", dst,
     ],
     `scene ${i + 1}`
   );
@@ -56,7 +51,7 @@ for (let i = 0; i < N; i++) {
 // ---- Stage 2: crossfade chain + audio ----
 const inputs = [];
 for (let i = 0; i < N; i++) inputs.push("-i", path.join(clipsDir, `c${String(i + 1).padStart(2, "0")}.mp4`));
-inputs.push("-i", path.join(here, "song.mp3"));
+inputs.push("-i", song);
 
 // Clips are already constant-frame-rate 30fps/1920x1080 — feed them straight to
 // xfade. (Any per-input fps/setpts/settb preprocessing corrupts the frame rate
