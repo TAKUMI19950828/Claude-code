@@ -411,7 +411,7 @@ code {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  text-align: left;
+  text-align: center;
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.84);
   backdrop-filter: blur(4px);
@@ -454,7 +454,6 @@ code {
   object-position: bottom;
   filter: drop-shadow(0 8px 18px rgba(124, 76, 137, 0.3));
 }
-.story-fig.m { margin-bottom: -1%; }
 
 /* ===== キャラクター・スポットライト ===== */
 .char-spotlight-list {
