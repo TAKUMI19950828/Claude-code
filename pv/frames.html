@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<style>
+  :root{
+    --ink:#59445f; --pink:#ff8fba; --pink-dark:#e96199;
+    --mint:#3fc5bd; --mint-dark:#2a9b94;
+    --purple:#a77bea; --purple-dark:#8857d4; --yellow:#ffd86f;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{width:1920px; height:1080px; overflow:hidden;
+    font-family:"IPAPGothic","IPAGothic",sans-serif; color:var(--ink);}
+  .scene{position:fixed; inset:0; width:1920px; height:1080px; display:none;
+    overflow:hidden; align-items:center; justify-content:center;}
+  .scene.on{display:flex;}
+
+  /* themed soft backgrounds */
+  .bg-soft{
+    background:
+      radial-gradient(ellipse 60% 55% at 12% 10%, rgba(255,159,199,.45), transparent 70%),
+      radial-gradient(ellipse 55% 50% at 90% 14%, rgba(102,224,214,.4), transparent 70%),
+      radial-gradient(ellipse 60% 55% at 14% 92%, rgba(173,130,240,.38), transparent 70%),
+      radial-gradient(ellipse 55% 50% at 92% 88%, rgba(255,214,110,.4), transparent 70%),
+      linear-gradient(160deg,#fff3f9,#f3fbff 50%,#faf3ff);
+  }
+  .bg-pink{background:radial-gradient(ellipse at 70% 20%,rgba(255,143,186,.5),transparent 60%),linear-gradient(150deg,#ffe6f1,#fff3f9 60%,#ffeaf4);}
+  .bg-mint{background:radial-gradient(ellipse at 70% 20%,rgba(63,197,189,.4),transparent 60%),linear-gradient(150deg,#dcf7f4,#f1fbff 60%,#e6fbf8);}
+  .bg-purple{background:radial-gradient(ellipse at 70% 20%,rgba(167,123,234,.45),transparent 60%),linear-gradient(150deg,#ece1fb,#f6f1ff 60%,#efe6ff);}
+
+  /* decorative petals */
+  .petal{position:absolute; opacity:.5; user-select:none;}
+
+  /* full-bleed image */
+  .full{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .veil-bottom{position:absolute; inset:0;
+    background:linear-gradient(to bottom, transparent 45%, rgba(89,68,95,.0) 50%, rgba(40,20,55,.72) 100%);}
+  .veil-soft{position:absolute; inset:0; background:linear-gradient(to top,rgba(255,240,248,.55),transparent 45%);}
+
+  /* logo */
+  .logo{filter:drop-shadow(0 18px 36px rgba(124,76,137,.3));}
+  .kicker{font-weight:900; letter-spacing:.28em; color:var(--pink-dark);
+    background:rgba(255,255,255,.78); padding:14px 30px; border-radius:999px;
+    box-shadow:0 6px 18px rgba(220,93,145,.18); font-size:30px;}
+
+  /* big copy */
+  .copy{font-weight:900; color:#fff; text-align:center; line-height:1.35;
+    text-shadow:0 6px 20px rgba(40,20,55,.55), 0 2px 4px rgba(40,20,55,.5);}
+  .copy-dark{font-weight:900; text-align:center; line-height:1.4; color:var(--ink);
+    text-shadow:2px 3px 0 #fff;}
+
+  /* profile layout */
+  .profile{position:relative; width:100%; height:100%;}
+  .standee{position:absolute; bottom:0; left:9%; height:104%; width:auto;
+    filter:drop-shadow(0 14px 30px rgba(124,76,137,.35));}
+  .pcard{position:absolute; right:8%; top:50%; transform:translateY(-50%);
+    width:760px; display:flex; flex-direction:column; gap:22px;}
+  .level{align-self:flex-start; font-weight:900; font-size:40px; color:#fff;
+    padding:10px 34px; border-radius:999px; box-shadow:0 8px 0 rgba(0,0,0,.12);}
+  .ptitle{font-weight:900; font-size:34px; letter-spacing:.06em;}
+  .pname{font-weight:900; font-size:150px; line-height:.95; letter-spacing:.02em;}
+  .pname small{display:block; font-size:36px; letter-spacing:.3em; font-weight:900; margin-top:8px; opacity:.85;}
+  .quote{font-weight:900; font-size:40px; color:var(--ink); padding:22px 30px;
+    border-radius:24px; background:rgba(255,255,255,.85); border:3px solid #fff;
+    box-shadow:0 14px 30px rgba(124,76,137,.2);}
+  .piece-mark{position:absolute; font-weight:900; color:#fff; opacity:.16;
+    font-size:760px; right:2%; bottom:-6%; line-height:1;}
+
+  /* CG showcase */
+  .cgwrap{position:relative; width:100%; height:100%; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:48px;}
+  .cg-head{font-weight:900; font-size:64px; text-shadow:2px 3px 0 #fff;}
+  .cg-row{display:flex; gap:54px; align-items:center;}
+  .cg{position:relative; width:820px; aspect-ratio:16/9; border-radius:26px; overflow:hidden;
+    border:6px solid #fff; box-shadow:0 26px 54px rgba(124,76,137,.34);}
+  .cg img{width:100%; height:100%; object-fit:cover;}
+  .cg .tag{position:absolute; left:0; right:0; bottom:0; padding:18px 22px; color:#fff;
+    font-weight:900; font-size:30px; text-align:left;
+    background:linear-gradient(to top,rgba(40,20,55,.85),transparent);}
+
+  /* montage grid */
+  .grid6{display:grid; grid-template-columns:repeat(3,440px); grid-template-rows:repeat(2,248px);
+    gap:26px;}
+  .grid6 .cg{width:440px; height:248px; border-width:5px; border-radius:20px;}
+
+  /* portraits row */
+  .prow{display:flex; gap:70px; align-items:flex-end;}
+  .pcol{display:flex; flex-direction:column; align-items:center; gap:18px;}
+  .portrait{width:380px; height:380px; border-radius:32px; object-fit:cover; border:6px solid #fff;
+    box-shadow:0 22px 46px rgba(124,76,137,.3);}
+  .plabel{font-weight:900; font-size:48px;}
+  .pbadge{font-weight:900; font-size:30px; color:#fff; padding:8px 26px; border-radius:999px;}
+
+  /* climax standees */
+  .climax-figs{position:absolute; bottom:0; left:0; right:0; height:88%;
+    display:flex; align-items:flex-end; justify-content:center; gap:30px;}
+  .climax-figs img{height:100%; width:auto; object-fit:contain; object-position:bottom;
+    filter:drop-shadow(0 14px 30px rgba(124,76,137,.4));}
+
+  /* CTA */
+  .cta-btn{font-weight:900; font-size:54px; color:#fff; padding:26px 70px; border-radius:999px;
+    background:linear-gradient(135deg,var(--pink),var(--pink-dark));
+    box-shadow:0 12px 0 #c94e83, 0 22px 40px rgba(220,93,145,.4);}
+  .url-chip{font-weight:900; font-size:38px; color:var(--pink-dark);
+    background:rgba(255,255,255,.9); padding:18px 44px; border-radius:999px;
+    box-shadow:0 8px 22px rgba(124,76,137,.2); letter-spacing:.02em;}
+
+  .accent-pink{color:var(--pink-dark);} .accent-mint{color:var(--mint-dark);} .accent-purple{color:var(--purple-dark);}
+  .lv-pink{background:linear-gradient(135deg,var(--pink),var(--pink-dark));}
+  .lv-mint{background:linear-gradient(135deg,var(--mint),var(--mint-dark));}
+  .lv-purple{background:linear-gradient(135deg,var(--purple),var(--purple-dark));}
+</style>
+</head>
+<body>
+
+<!-- 01 INTRO -->
+<div class="scene" data-s="1">
+  <img class="full" src="../assets/characters/school-bg.webp" style="filter:blur(7px) brightness(1.05); transform:scale(1.08);" />
+  <div class="veil-soft"></div>
+  <div style="position:absolute; inset:0; background:linear-gradient(160deg,rgba(255,230,243,.55),rgba(238,225,251,.55));"></div>
+  <div style="position:relative; display:flex; flex-direction:column; align-items:center; gap:46px;">
+    <img class="logo" src="../assets/characters/title-logo.webp" style="width:1180px;" />
+    <div class="kicker">B R O W S E R　S H O G I　×　C U T E　G I R L S</div>
+  </div>
+  <span class="petal" style="top:12%; left:14%; font-size:70px;">🌸</span>
+  <span class="petal" style="top:24%; right:12%; font-size:54px;">✿</span>
+  <span class="petal" style="bottom:16%; left:20%; font-size:50px;">✦</span>
+  <span class="petal" style="bottom:22%; right:18%; font-size:64px;">🌸</span>
+</div>
+
+<!-- 02 KEY VISUAL -->
+<div class="scene" data-s="2">
+  <img class="full" src="../assets/characters/title-ensemble.webp" style="object-position:center 30%;" />
+  <div class="veil-bottom"></div>
+  <div style="position:absolute; bottom:70px; left:0; right:0; text-align:center;">
+    <div class="copy" style="font-size:62px;">かわいい3人の女の子と、<br/>ブラウザだけで指す本格将棋。</div>
+  </div>
+</div>
+
+<!-- 03 ERURU PROFILE -->
+<div class="scene bg-pink" data-s="3">
+  <div class="profile">
+    <div class="piece-mark accent-pink">歩</div>
+    <img class="standee" src="../assets/characters/eruru-full.webp" />
+    <div class="pcard">
+      <div class="level lv-pink">初級</div>
+      <div class="ptitle accent-pink">にこにこ歩のプリンセス</div>
+      <div class="pname accent-pink">エルル<small>E R U R U</small></div>
+      <div class="quote">「いっしょに楽しく指そうね♪」</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 ERURU CG -->
+<div class="scene bg-pink" data-s="4">
+  <div class="cgwrap">
+    <div class="cg-head accent-pink">♥ エルルのご褒美イベント</div>
+    <div class="cg-row">
+      <div class="cg"><img src="../assets/characters/eruru-cg-1.webp"/><div class="tag">浴衣の花火デート</div></div>
+      <div class="cg"><img src="../assets/characters/eruru-cg-2.webp"/><div class="tag">★MAX 桜色のウェディング</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 MIU PROFILE -->
+<div class="scene bg-mint" data-s="5">
+  <div class="profile">
+    <div class="piece-mark accent-mint">銀</div>
+    <img class="standee" src="../assets/characters/miu-full.webp" style="left:13%; height:102%;" />
+    <div class="pcard">
+      <div class="level lv-mint">中級</div>
+      <div class="ptitle accent-mint">きらめき銀のアイドル</div>
+      <div class="pname accent-mint">ミウ<small>M I U</small></div>
+      <div class="quote">「ミウと本気の勝負、してみる？」</div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 MIU CG -->
+<div class="scene bg-mint" data-s="6">
+  <div class="cgwrap">
+    <div class="cg-head accent-mint">♥ ミウのご褒美イベント</div>
+    <div class="cg-row">
+      <div class="cg"><img src="../assets/characters/miu-cg-1.webp"/><div class="tag">私服の水族館デート</div></div>
+      <div class="cg"><img src="../assets/characters/miu-cg-2.webp"/><div class="tag">★MAX 青い海のウェディング</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 RIRIKA PROFILE -->
+<div class="scene bg-purple" data-s="7">
+  <div class="profile">
+    <div class="piece-mark accent-purple">龍</div>
+    <img class="standee" src="../assets/characters/ririka-full.webp" style="left:11%;" />
+    <div class="pcard">
+      <div class="level lv-purple">上級</div>
+      <div class="ptitle accent-purple">星空の天才りゅう姫</div>
+      <div class="pname accent-purple">リリカ<small>R I R I K A</small></div>
+      <div class="quote">「リリカの星読み将棋、受けてみる？」</div>
+    </div>
+  </div>
+</div>
+
+<!-- 08 RIRIKA CG -->
+<div class="scene bg-purple" data-s="8">
+  <div class="cgwrap">
+    <div class="cg-head accent-purple">♥ リリカのご褒美イベント</div>
+    <div class="cg-row">
+      <div class="cg"><img src="../assets/characters/ririka-cg-1.webp"/><div class="tag">月夜の神社デート</div></div>
+      <div class="cg"><img src="../assets/characters/ririka-cg-2.webp"/><div class="tag">★MAX 祝福のチャペル</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- 09 EVENTS MONTAGE -->
+<div class="scene bg-soft" data-s="9">
+  <div class="cgwrap" style="gap:54px;">
+    <div class="cg-head" style="font-size:72px;"><span class="accent-pink">全27話</span>の<span class="accent-purple">ご褒美イベント</span></div>
+    <div class="grid6">
+      <div class="cg"><img src="../assets/characters/eruru-cg-1.webp"/></div>
+      <div class="cg"><img src="../assets/characters/miu-cg-1.webp"/></div>
+      <div class="cg"><img src="../assets/characters/ririka-cg-1.webp"/></div>
+      <div class="cg"><img src="../assets/characters/eruru-cg-2.webp"/></div>
+      <div class="cg"><img src="../assets/characters/miu-cg-2.webp"/></div>
+      <div class="cg"><img src="../assets/characters/ririka-cg-2.webp"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- 10 DIFFICULTY -->
+<div class="scene bg-soft" data-s="10">
+  <div class="cgwrap" style="gap:60px;">
+    <div class="cg-head" style="font-size:68px;">難易度は<span class="accent-pink">3段階</span>。さあ、誰と指す？</div>
+    <div class="prow">
+      <div class="pcol">
+        <img class="portrait" src="../assets/characters/eruru.webp"/>
+        <div class="pbadge lv-pink">初級</div>
+        <div class="plabel accent-pink">エルル</div>
+      </div>
+      <div class="pcol">
+        <img class="portrait" src="../assets/characters/miu.webp"/>
+        <div class="pbadge lv-mint">中級</div>
+        <div class="plabel accent-mint">ミウ</div>
+      </div>
+      <div class="pcol">
+        <img class="portrait" src="../assets/characters/ririka.webp"/>
+        <div class="pbadge lv-purple">上級</div>
+        <div class="plabel accent-purple">リリカ</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 11 CLIMAX -->
+<div class="scene" data-s="11">
+  <img class="full" src="../assets/characters/school-bg.webp" style="filter:brightness(1.03);"/>
+  <div style="position:absolute; inset:0; background:linear-gradient(to bottom,rgba(255,247,251,.4),rgba(247,240,255,.25) 40%,rgba(40,20,55,.45));"></div>
+  <div class="climax-figs">
+    <img src="../assets/characters/eruru-full.webp"/>
+    <img src="../assets/characters/miu-full.webp"/>
+    <img src="../assets/characters/ririka-full.webp"/>
+  </div>
+  <div style="position:absolute; top:90px; left:0; right:0; text-align:center;">
+    <div class="copy" style="font-size:78px;">君は、どの娘と<br/>恋に落ちる——？</div>
+  </div>
+</div>
+
+<!-- 12 CTA -->
+<div class="scene bg-soft" data-s="12">
+  <div style="position:relative; display:flex; flex-direction:column; align-items:center; gap:44px;">
+    <img class="logo" src="../assets/characters/title-logo.webp" style="width:980px;"/>
+    <div class="cta-btn">今すぐ、ブラウザで無料プレイ！</div>
+    <div class="url-chip">takumi19950828.github.io/Claude-code</div>
+  </div>
+  <span class="petal" style="top:14%; left:16%; font-size:64px;">🌸</span>
+  <span class="petal" style="top:20%; right:14%; font-size:50px;">♥</span>
+  <span class="petal" style="bottom:16%; left:22%; font-size:54px;">✦</span>
+  <span class="petal" style="bottom:20%; right:20%; font-size:64px;">🌸</span>
+</div>
+
+</body>
+</html>
