@@ -369,6 +369,7 @@ code {
 .section-title {
   text-align: center;
   font-size: clamp(28px, 5vw, 44px);
+  margin-bottom: clamp(30px, 4vw, 44px);
   text-shadow: 2px 3px 0 white, 4px 5px 0 rgba(255, 143, 186, 0.18);
 }
 .section-title::after {
