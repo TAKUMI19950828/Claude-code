@@ -13,5 +13,7 @@
 | `eruru-cg-1.webp` / `eruru-cg-2.webp` | エルルのご褒美イベントCG（ギャラリー表示・クリックで拡大） |
 | `miu-cg-1.webp` / `miu-cg-2.webp` | ミウのご褒美イベントCG |
 | `ririka-cg-1.webp` / `ririka-cg-2.webp` | リリカのご褒美イベントCG |
+| `school-bg.webp` | ストーリーセクションの背景（桜花学園） |
+| `eruru-full.webp` / `miu-full.webp` / `ririka-full.webp` | ストーリーセクションの全身立ち絵（透過済み） |
 
 ゲーム本体の `assets/characters/` フォルダから同名ファイルをコピーすると、そのまま表示されます。

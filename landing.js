@@ -29,7 +29,7 @@
   // ===== スクロールで要素をふわっと表示 =====
   function setupReveal() {
     const targets = document.querySelectorAll(
-      ".about-card, .char-spotlight, .feature-card, .system-card, .step, .hero-stats li"
+      ".story-text, .char-spotlight, .feature-card, .system-card, .step"
     );
     if (reduceMotion || !("IntersectionObserver" in window)) {
       targets.forEach((el) => el.classList.add("in"));
