@@ -5,9 +5,13 @@
 
 | ファイル名 | 用途 |
 | --- | --- |
-| `title-ensemble.webp` | ヒーローのキービジュアル（3人集合） |
+| `title-ensemble.webp` | ヒーローのキービジュアル（3人集合・最上部フルワイド表示） |
+| `title-logo.webp` | タイトルロゴ（透過PNG/WebP、ヒーロー画像に重ねて表示） |
 | `eruru.webp` | エルル（初級）の立ち絵 |
 | `miu.webp` | ミウ（中級）の立ち絵 |
 | `ririka.webp` | リリカ（上級）の立ち絵 |
+| `eruru-cg-1.webp` / `eruru-cg-2.webp` | エルルのご褒美イベントCG（ギャラリー表示・クリックで拡大） |
+| `miu-cg-1.webp` / `miu-cg-2.webp` | ミウのご褒美イベントCG |
+| `ririka-cg-1.webp` / `ririka-cg-2.webp` | リリカのご褒美イベントCG |
 
 ゲーム本体の `assets/characters/` フォルダから同名ファイルをコピーすると、そのまま表示されます。
