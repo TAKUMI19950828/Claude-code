@@ -404,7 +404,7 @@ code {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  border: 0;
 }
 .movie-note {
   max-width: 720px;
