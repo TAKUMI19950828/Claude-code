@@ -406,14 +406,6 @@ code {
   height: 100%;
   border: 0;
 }
-.movie-note {
-  max-width: 720px;
-  margin: 24px auto 0;
-  text-align: center;
-  color: var(--ink-soft);
-  font-weight: 700;
-  font-size: 15px;
-}
 
 /* ===== ストーリー ===== */
 .story-stage {
