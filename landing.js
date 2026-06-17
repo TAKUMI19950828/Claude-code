@@ -131,11 +131,42 @@
     });
   }
 
+  // ===== Xシェアリンクを現在のURLで生成 =====
+  function setupShare() {
+    const share = document.querySelector(".footer-share-x");
+    if (!share) return;
+    const url = location.href.split("#")[0];
+    const text = "かわいい3人と指す、ブラウザだけで遊べる美少女将棋『しょうぎむすめ！』";
+    share.href =
+      "https://twitter.com/intent/tweet?text=" +
+      encodeURIComponent(text) +
+      "&url=" +
+      encodeURIComponent(url) +
+      "&hashtags=" +
+      encodeURIComponent("しょうぎむすめ");
+  }
+
+  // ===== CTAクリック計測（gtag / dataLayer があれば送信、無ければ無害） =====
+  function setupCtaTracking() {
+    document.querySelectorAll("[data-cta]").forEach((el) => {
+      el.addEventListener("click", () => {
+        const id = el.dataset.cta;
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "cta_click", { cta_id: id });
+        } else if (Array.isArray(window.dataLayer)) {
+          window.dataLayer.push({ event: "cta_click", cta_id: id });
+        }
+      });
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     spawnPetals();
     setupReveal();
     setupBackToTop();
     setupNavHighlight();
     setupLightbox();
+    setupShare();
+    setupCtaTracking();
   });
 })();
