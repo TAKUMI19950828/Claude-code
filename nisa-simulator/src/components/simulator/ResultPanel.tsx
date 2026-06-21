@@ -92,7 +92,8 @@ export function ResultPanel({ pattern, result, shareUrl, shared }: ResultPanelPr
             </div>
             <h3 className="mt-6 text-sm font-extrabold text-ink">資産の育ち方（NISA と 課税口座）</h3>
             <p className="mt-1 text-xs text-ink-soft">
-              暖色の線が NISA（非課税）、破線が課税口座。差が「非課税で得られるメリット」です。
+              暖色の線が NISA（非課税）、破線が課税口座、点線が投資元本。NISAと課税口座の差が
+              「非課税で得られるメリット」です。
             </p>
             <div className="mt-2">
               <Suspense

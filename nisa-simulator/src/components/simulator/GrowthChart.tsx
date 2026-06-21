@@ -1,7 +1,8 @@
 import {
   Area,
-  AreaChart,
   CartesianGrid,
+  ComposedChart,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -10,6 +11,8 @@ import {
 import type { ChartPoint } from '../../types';
 import { signedYen, yen } from '../../lib/format';
 import { usePrefersReducedMotion } from '../../hooks/useCountUp';
+
+const PRINCIPAL_COLOR = '#A9876E';
 
 const yTick = (v: number): string => {
   if (v >= 1e8) return `${(v / 1e8).toFixed(1)}億`;
@@ -33,6 +36,13 @@ function ChartTooltip({ active, payload, label }: any) {
         <span>課税口座</span>
         <span className="tabular-nums">{yen(point.taxable)}</span>
       </p>
+      <p
+        className="flex items-center justify-between gap-4 font-bold"
+        style={{ color: PRINCIPAL_COLOR }}
+      >
+        <span>投資元本</span>
+        <span className="tabular-nums">{yen(point.principal)}</span>
+      </p>
       <p className="mt-1 flex items-center justify-between gap-4 border-t border-line pt-1 font-bold text-gain-text">
         <span>差</span>
         <span className="tabular-nums">{signedYen(diff)}</span>
@@ -46,7 +56,7 @@ function ChartTooltip({ active, payload, label }: any) {
 function makeEndLabel(lastIndex: number, text: string, color: string) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (props: any) => {
-    if (props.index !== lastIndex) return null;
+    if (props.index !== lastIndex) return <g />;
     return (
       <text
         x={props.x}
@@ -71,7 +81,7 @@ export function GrowthChart({ data }: { data: ChartPoint[] }) {
   return (
     <div className="h-[260px] w-full" aria-hidden>
       <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data} margin={{ top: 10, right: 64, left: 4, bottom: 0 }}>
+        <ComposedChart data={data} margin={{ top: 10, right: 64, left: 4, bottom: 0 }}>
           <defs>
             <linearGradient id="nisaFill" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#FF8A66" stopOpacity={0.34} />
@@ -130,7 +140,18 @@ export function GrowthChart({ data }: { data: ChartPoint[] }) {
             label={makeEndLabel(lastIndex, '課税', '#475569')}
             dot={false}
           />
-        </AreaChart>
+          {/* 投資元本（ブラウンの点線・運用益の土台） */}
+          <Line
+            type="monotone"
+            dataKey="principal"
+            stroke={PRINCIPAL_COLOR}
+            strokeWidth={2}
+            strokeDasharray="2 3"
+            isAnimationActive={!prefersReduced}
+            label={makeEndLabel(lastIndex, '元本', PRINCIPAL_COLOR)}
+            dot={false}
+          />
+        </ComposedChart>
       </ResponsiveContainer>
     </div>
   );

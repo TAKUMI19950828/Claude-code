@@ -1,4 +1,4 @@
-import { Mascot } from './Mascot';
+import { Sprout } from 'lucide-react';
 
 const NAV = [
   { href: '#simulator', label: 'シミュレーション' },
@@ -11,7 +11,9 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-line/70 bg-cream/80 backdrop-blur-md">
       <div className="mx-auto flex max-w-sim items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
         <a href="#top" className="flex items-center gap-2">
-          <Mascot pose="wave" className="h-9 w-9 shrink-0" />
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-coral-500/15 text-primary">
+            <Sprout size={20} aria-hidden />
+          </span>
           <span className="font-rounded text-base font-extrabold leading-tight text-ink sm:text-lg">
             つみたて<span className="text-primary">みらい</span>シミュレーター
           </span>

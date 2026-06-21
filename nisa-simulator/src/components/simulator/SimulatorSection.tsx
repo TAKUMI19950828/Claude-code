@@ -44,8 +44,8 @@ export function SimulatorSection() {
         <PatternTabs pattern={state.pattern} onChange={(p) => dispatch({ type: 'setPattern', pattern: p })} />
       </div>
 
-      {/* スマホ用：常に見えるライブ結果サマリ */}
-      <div className="sticky top-14 z-30 mt-4 md:hidden">
+      {/* 入力中も常に見えるライブ結果サマリ（全画面幅） */}
+      <div className="sticky top-14 z-30 mt-4">
         <div className="flex items-center justify-between gap-3 rounded-full border border-line bg-white/90 px-4 py-2.5 shadow-card backdrop-blur">
           <span className="text-xs font-bold text-ink-soft">{sum.label}</span>
           <span className="truncate font-rounded text-base font-extrabold tabular-nums text-primary">
@@ -54,7 +54,8 @@ export function SimulatorSection() {
         </div>
       </div>
 
-      <div className="mt-4 grid items-start gap-4 md:grid-cols-2 md:gap-6">
+      {/* 入力 → 結果 の順で縦積み（各カードは横幅いっぱい） */}
+      <div className="mt-4 space-y-6">
         <InputsPanel
           pattern={state.pattern}
           values={values}

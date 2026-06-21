@@ -1,5 +1,4 @@
 import { forwardRef } from 'react';
-import { Mascot } from '../Mascot';
 import { manYen, yen } from '../../lib/format';
 
 export interface ShareCardData {
@@ -31,7 +30,9 @@ export const ResultShareCard = forwardRef<HTMLDivElement, { data: ShareCardData 
         <div className="flex flex-1 flex-col rounded-[48px] bg-white p-16 shadow-xl">
           {/* ヘッダー */}
           <div className="flex items-center gap-3">
-            <Mascot pose="cheer" className="h-16 w-16" />
+            <span className="flex h-14 w-14 items-center justify-center rounded-full bg-coral-500/15 text-3xl">
+              🌱
+            </span>
             <span className="text-2xl font-extrabold text-ink">
               つみたて<span className="text-primary">みらい</span>シミュレーター
             </span>

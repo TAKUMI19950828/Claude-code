@@ -2,7 +2,6 @@ import type { ReactNode } from 'react';
 import { futureValue } from '../../lib/calc';
 import { NISA } from '../../lib/nisaRules';
 import { manYen, yen } from '../../lib/format';
-import { Mascot } from '../Mascot';
 
 function Card({ emoji, title, children }: { emoji: string; title: string; children: ReactNode }) {
   return (
@@ -100,7 +99,9 @@ export function NisaExplainerSection() {
   return (
     <section id="about" className="mx-auto max-w-prose scroll-mt-16 px-4 py-10 sm:px-6">
       <div className="flex items-center gap-3">
-        <Mascot pose="point" className="h-14 w-14 shrink-0" />
+        <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-coral-500/15 text-2xl">
+          🌱
+        </span>
         <div>
           <h2 className="font-rounded text-2xl font-extrabold text-ink sm:text-3xl">NISAって、なに？</h2>
           <p className="text-sm text-ink-soft">むずかしい言葉はなし。3分でわかる、やさしいキホン。</p>
