@@ -31,6 +31,7 @@ NISA初心者に「つみたて投資が将来いくらになる？」をやさ�
 | `npm install`     | 依存関係のインストール                 |
 | `npm run dev`     | 開発サーバー起動                       |
 | `npm run build`   | 型チェック＋本番ビルド（`dist/`）       |
+| `npm run build:single` | 単一HTMLファイルを生成（`dist-single/index.html`・JS/CSS内蔵） |
 | `npm run preview` | ビルド結果のプレビュー                 |
 | `npm run test`    | Vitest 実行                            |
 

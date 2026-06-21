@@ -33,7 +33,14 @@ export default {
         taxable: '#475569',
       },
       fontFamily: {
-        rounded: ['"M PLUS Rounded 1c"', '"Noto Sans JP"', 'system-ui', 'sans-serif'],
+        rounded: [
+          '"M PLUS Rounded 1c"',
+          '"Hiragino Maru Gothic ProN"',
+          '"Yu Gothic"',
+          '"Noto Sans JP"',
+          'system-ui',
+          'sans-serif',
+        ],
       },
       borderRadius: {
         card: '28px',
