@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-rounded text-ink antialiased;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(60% 50% at 8% 0%, rgba(255, 158, 128, 0.18), transparent 70%),
+      radial-gradient(55% 45% at 96% 4%, rgba(255, 190, 77, 0.16), transparent 70%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
+
+  /* 全背景で視認できる focus リング（濃端＋オフセット） */
+  :focus-visible {
+    outline: 3px solid #d2441a;
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  /* スライダー（トラックの塗りはインラインの linear-gradient で指定） */
+  .nisa-range {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    border-radius: 999px;
+    outline-offset: 4px;
+    cursor: pointer;
+  }
+  .nisa-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 3px solid #d2441a;
+    box-shadow: 0 2px 6px rgba(210, 68, 26, 0.3);
+    cursor: pointer;
+  }
+  .nisa-range::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 999px;
+    background: #ffffff;
+    border: 3px solid #d2441a;
+    box-shadow: 0 2px 6px rgba(210, 68, 26, 0.3);
+    cursor: pointer;
+  }
+  .nisa-range::-moz-range-track {
+    height: 8px;
+    border-radius: 999px;
+    background: transparent;
+  }
+}
+
+/* モーション抑制設定を尊重 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

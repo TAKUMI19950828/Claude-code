@@ -1,0 +1,12 @@
+# Netlify 独立サイト設定（base:'/' のルート配信）
+[build]
+  base = "nisa-simulator"
+  command = "npm run build"
+  publish = "dist"
+
+# SPA ではなく単一HTML。クエリパラメータのみ使用するため redirect は不要だが、
+# 念のため未知パスは index.html へフォールバック。
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
