@@ -9,7 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 import type { ChartPoint } from '../../types';
-import { signedYen, yen } from '../../lib/format';
+import { manYen } from '../../lib/format';
 import { usePrefersReducedMotion } from '../../hooks/useCountUp';
 
 const PRINCIPAL_COLOR = '#A9876E';
@@ -30,22 +30,22 @@ function ChartTooltip({ active, payload, label }: any) {
       <p className="font-extrabold text-ink">{point.year}年目</p>
       <p className="mt-1 flex items-center justify-between gap-4 font-bold text-primary">
         <span>NISA（非課税）</span>
-        <span className="tabular-nums">{yen(point.nisa)}</span>
+        <span className="tabular-nums">{manYen(point.nisa)}</span>
       </p>
       <p className="flex items-center justify-between gap-4 font-bold text-taxable">
         <span>課税口座</span>
-        <span className="tabular-nums">{yen(point.taxable)}</span>
+        <span className="tabular-nums">{manYen(point.taxable)}</span>
       </p>
       <p
         className="flex items-center justify-between gap-4 font-bold"
         style={{ color: PRINCIPAL_COLOR }}
       >
         <span>投資元本</span>
-        <span className="tabular-nums">{yen(point.principal)}</span>
+        <span className="tabular-nums">{manYen(point.principal)}</span>
       </p>
       <p className="mt-1 flex items-center justify-between gap-4 border-t border-line pt-1 font-bold text-gain-text">
         <span>差</span>
-        <span className="tabular-nums">{signedYen(diff)}</span>
+        <span className="tabular-nums">+{manYen(Math.max(diff, 0))}</span>
       </p>
       {/* label is unused but provided by recharts */}
       <span className="sr-only">{label}</span>

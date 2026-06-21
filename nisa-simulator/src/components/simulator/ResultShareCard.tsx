@@ -41,12 +41,10 @@ export const ResultShareCard = forwardRef<HTMLDivElement, { data: ShareCardData 
           {/* ヘッドライン */}
           <div className="mt-12">
             <p className="text-3xl font-bold text-ink-soft">{data.headlineLabel}</p>
-            <p className="mt-3 text-[110px] font-extrabold leading-none tabular-nums text-ink">
-              {data.headlineValue}
+            <p className="mt-3 text-[104px] font-extrabold leading-none tabular-nums text-ink">
+              {data.headlineManYen ?? data.headlineValue}
             </p>
-            {data.headlineManYen && (
-              <p className="mt-3 text-4xl font-bold text-ink-soft">{data.headlineManYen}</p>
-            )}
+            <p className="mt-3 text-4xl font-bold text-ink-soft">{data.headlineValue}</p>
           </div>
 
           {/* 内訳バー */}

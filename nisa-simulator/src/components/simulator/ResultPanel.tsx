@@ -18,6 +18,7 @@ interface ResultPanelProps {
   result: ComputedResult;
   shareUrl: string;
   shared: boolean;
+  animateKey: number;
 }
 
 const OK_LABEL: Record<Pattern, string> = {
@@ -27,7 +28,7 @@ const OK_LABEL: Record<Pattern, string> = {
   4: '目標達成に必要な初期投資額',
 };
 
-export function ResultPanel({ pattern, result, shareUrl, shared }: ResultPanelProps) {
+export function ResultPanel({ pattern, result, shareUrl, shared, animateKey }: ResultPanelProps) {
   const { answer, detail } = result;
 
   // 数字のカウントアップ対象（円の答え or 将来資産）。hooksは無条件で呼ぶ。
@@ -35,10 +36,10 @@ export function ResultPanel({ pattern, result, shareUrl, shared }: ResultPanelPr
     answer.kind === 'ok' && (pattern === 1 || pattern === 2 || pattern === 4)
       ? answer.value
       : (detail?.finalValue ?? 0);
-  const animated = useCountUp(numericTarget, pattern);
+  const animated = useCountUp(numericTarget, animateKey);
 
   return (
-    <div key={pattern} className="animate-fade-up space-y-4">
+    <div key={animateKey} className="animate-fade-up space-y-4">
       {shared && (
         <div className="inline-flex items-center gap-1.5 rounded-full bg-amber-300/50 px-3 py-1 text-xs font-bold text-ink">
           <LinkIcon size={13} aria-hidden />
@@ -70,10 +71,10 @@ export function ResultPanel({ pattern, result, shareUrl, shared }: ResultPanelPr
             ) : (
               <>
                 <p className="mt-1 font-rounded text-[clamp(2.4rem,10vw,4.25rem)] font-extrabold leading-none tabular-nums text-ink">
-                  {yen(animated)}
+                  {manYen(animated)}
                   {pattern === 2 && <span className="ml-1 text-2xl text-ink-soft">/月</span>}
                 </p>
-                <p className="mt-2 text-base font-bold text-ink-soft">（{manYen(numericTarget)}）</p>
+                <p className="mt-2 text-base font-bold text-ink-soft">{yen(numericTarget)}</p>
               </>
             )}
           </div>

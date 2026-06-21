@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Info } from 'lucide-react';
 import type { CompareResult } from '../../types';
-import { yen } from '../../lib/format';
+import { manYen, yen } from '../../lib/format';
 
 export function NisaComparisonCard({ compare }: { compare: CompareResult }) {
   const [showNote, setShowNote] = useState(false);
@@ -12,21 +12,24 @@ export function NisaComparisonCard({ compare }: { compare: CompareResult }) {
       <p className="mt-1 font-rounded text-2xl font-extrabold leading-tight sm:text-3xl">
         課税口座より{' '}
         <span className="tabular-nums [text-shadow:0_1px_2px_rgba(0,0,0,.18)]">
-          +{yen(compare.taxSaved)}
+          +{manYen(compare.taxSaved)}
         </span>
         <br className="sm:hidden" /> 多く残せる！
       </p>
+      <p className="mt-1 text-xs font-bold text-white/70 tabular-nums">（{yen(compare.taxSaved)}）</p>
 
       <div className="mt-4 grid grid-cols-2 gap-2">
         <div className="rounded-control bg-white/15 px-3 py-2.5 backdrop-blur-sm">
           <p className="text-xs font-bold text-white/80">NISA（非課税）</p>
-          <p className="mt-0.5 text-base font-extrabold tabular-nums">{yen(compare.nisaFinal)}</p>
+          <p className="mt-0.5 text-lg font-extrabold tabular-nums">{manYen(compare.nisaFinal)}</p>
+          <p className="text-[11px] font-bold tabular-nums text-white/70">{yen(compare.nisaFinal)}</p>
         </div>
         <div className="rounded-control bg-black/10 px-3 py-2.5">
           <p className="text-xs font-bold text-white/80">課税口座</p>
-          <p className="mt-0.5 text-base font-extrabold tabular-nums text-white/90">
-            {yen(compare.taxableFinal)}
+          <p className="mt-0.5 text-lg font-extrabold tabular-nums text-white/90">
+            {manYen(compare.taxableFinal)}
           </p>
+          <p className="text-[11px] font-bold tabular-nums text-white/60">{yen(compare.taxableFinal)}</p>
         </div>
       </div>
 

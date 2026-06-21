@@ -22,13 +22,15 @@ beforeAll(() => {
 });
 
 describe('App スモークテスト（実マウント相当・SSR）', () => {
-  it('既定状態で主要セクションを例外なく描画する', () => {
+  it('既定状態（未計算）で主要セクションとプレースホルダを描画する', () => {
+    window.history.replaceState({}, '', '/'); // 共有パラメータなし
     const html = renderToString(createElement(App));
     expect(html).toContain('つみたてシミュレーション');
     expect(html).toContain('NISAって、なに？');
     expect(html).toContain('免責事項');
-    // 既定値で結果（将来の資産額）が出ている
-    expect(html).toContain('将来の資産額');
+    // 未計算なので「計算する」ボタンとプレースホルダが出る（結果は非表示）
+    expect(html).toContain('計算する');
+    expect(html).toContain('ここに表示されます');
   });
 
   it('共有パラメータ付きURLでもクラッシュせず描画する', () => {

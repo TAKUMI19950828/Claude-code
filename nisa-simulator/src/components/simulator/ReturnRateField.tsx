@@ -17,12 +17,17 @@ export function ReturnRateField({ value, onChange, onPreset }: ReturnRateFieldPr
     <div className="rounded-control bg-surface-soft p-3.5 sm:p-4">
       <InputSlider
         label="想定リターン（年率）"
-        icon={<TrendingUp size={16} className="text-primary" aria-hidden />}
+        icon={<TrendingUp size={18} className="text-primary" aria-hidden />}
         kind="percent"
         value={value}
         min={RANGE.rPercent[0]}
         max={RANGE.rPercent[1]}
         step={STEP.rPercent}
+        ticks={[
+          { value: 0, label: '0%' },
+          { value: 5, label: '5%' },
+          { value: 10, label: '10%' },
+        ]}
         onChange={onChange}
       />
 

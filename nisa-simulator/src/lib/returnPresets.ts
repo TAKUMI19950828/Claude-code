@@ -7,8 +7,8 @@ export interface ReturnPreset {
 }
 
 export const RETURN_PRESETS: ReturnPreset[] = [
-  { label: '全世界株式インデックス', short: '全世界株式', rPercent: 5, emoji: '🌍' },
   { label: 'S&P500（米国株式）', short: 'S&P500', rPercent: 7, emoji: '🇺🇸' },
+  { label: '全世界株式インデックス', short: '全世界株式', rPercent: 5, emoji: '🌍' },
   { label: '国内株式インデックス', short: '国内株式', rPercent: 4, emoji: '🗾' },
   { label: 'バランス型（株式＋債券）', short: 'バランス型', rPercent: 3, emoji: '⚖️' },
   { label: '預金・低リスク', short: '預金・低リスク', rPercent: 0.2, emoji: '🐷' },
