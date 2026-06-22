@@ -63,7 +63,7 @@ export function ResultPanel({ pattern, result, shareUrl, shared, animateKey }: R
           />
         ) : (
           <div aria-live="polite">
-            <p className="text-sm font-bold text-ink-soft">{OK_LABEL[pattern]}</p>
+            <p className="text-base font-bold text-ink-soft sm:text-lg">{OK_LABEL[pattern]}</p>
             {pattern === 3 ? (
               <p className="mt-1 font-rounded text-[clamp(2.2rem,9vw,3.75rem)] font-extrabold leading-none text-ink">
                 {yearsMonths(answer.value)}
@@ -85,14 +85,14 @@ export function ResultPanel({ pattern, result, shareUrl, shared, animateKey }: R
       {detail && (
         <>
           <div className="rounded-card bg-white p-5 shadow-card sm:p-6">
-            <h3 className="text-sm font-extrabold text-ink">
+            <h3 className="text-lg font-extrabold text-ink">
               {detail.years > 0 ? `${Math.round(detail.years)}年後の内訳` : '内訳'}
             </h3>
             <div className="mt-3">
               <BreakdownBar principal={detail.principal} gain={detail.gain} />
             </div>
-            <h3 className="mt-6 text-sm font-extrabold text-ink">資産の育ち方（NISA と 課税口座）</h3>
-            <p className="mt-1 text-xs text-ink-soft">
+            <h3 className="mt-6 text-lg font-extrabold text-ink">資産の育ち方（NISA と 課税口座）</h3>
+            <p className="mt-1 text-sm text-ink-soft">
               暖色の線が NISA（非課税）、破線が課税口座、点線が投資元本。NISAと課税口座の差が
               「非課税で得られるメリット」です。
             </p>

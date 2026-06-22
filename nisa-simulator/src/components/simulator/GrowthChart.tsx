@@ -81,7 +81,7 @@ export function GrowthChart({ data }: { data: ChartPoint[] }) {
   return (
     <div className="h-[260px] w-full" aria-hidden>
       <ResponsiveContainer width="100%" height="100%">
-        <ComposedChart data={data} margin={{ top: 10, right: 64, left: 4, bottom: 0 }}>
+        <ComposedChart data={data} margin={{ top: 10, right: 64, left: 0, bottom: 0 }}>
           <defs>
             <linearGradient id="nisaFill" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stopColor="#FF8A66" stopOpacity={0.34} />
@@ -110,10 +110,10 @@ export function GrowthChart({ data }: { data: ChartPoint[] }) {
           />
           <YAxis
             tickFormatter={yTick}
-            tick={{ fill: '#6B5A50', fontSize: 11 }}
+            tick={{ fill: '#6B5A50', fontSize: 10 }}
             tickLine={false}
             axisLine={false}
-            width={40}
+            width={58}
           />
           <Tooltip content={<ChartTooltip />} cursor={{ stroke: '#FFB89E', strokeWidth: 1 }} />
 
