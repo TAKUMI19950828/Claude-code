@@ -2,10 +2,10 @@ import type { InputsByPattern, Pattern } from '../types';
 
 /** 入力の許容レンジ（スライダー範囲＝クランプ範囲）。 */
 export const RANGE = {
-  P: [0, 10_000_000],
+  P: [0, 30_000_000],
   C: [0, 300_000],
   years: [1, 40],
-  rPercent: [0, 10],
+  rPercent: [0, 20],
   goal: [100_000, 100_000_000],
 } as const;
 

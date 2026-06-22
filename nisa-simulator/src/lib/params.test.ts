@@ -21,7 +21,7 @@ describe('decodeParams：安全な劣化', () => {
 
   it('範囲外の値 → クランプ', () => {
     const { inputs } = decodeParams('?p=1&P=999999999&C=-5000&y=200&r=-50');
-    expect(inputs[1].P).toBe(10_000_000); // 上限
+    expect(inputs[1].P).toBe(30_000_000); // 上限
     expect(inputs[1].C).toBe(0); // 下限
     expect(inputs[1].years).toBe(40); // 上限
     expect(inputs[1].rPercent).toBe(0); // 下限
