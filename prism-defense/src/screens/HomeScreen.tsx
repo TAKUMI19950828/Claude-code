@@ -1,5 +1,7 @@
 import type { Screen } from '../types/game';
 import { PrimaryButton } from '../components/PrimaryButton';
+import { CharacterSprite } from '../components/CharacterSprite';
+import { getCharacter } from '../data/characters';
 
 interface Props {
   onNavigate: (s: Screen) => void;
@@ -18,8 +20,13 @@ export function HomeScreen({ onNavigate }: Props) {
       <div className="home-hero">
         <div className="home-hero__sub">PRISM DEFENSE</div>
         <div className="home-hero__title">プリズムディフェンス！</div>
-        <div className="home-hero__sd sd-bounce">🌸</div>
-        <div className="home-hero__friends">💧 🔮</div>
+        <div className="home-hero__sd sd-bounce">
+          <CharacterSprite def={getCharacter('akari')!} size={150} />
+        </div>
+        <div className="home-hero__friends">
+          <CharacterSprite def={getCharacter('miu')!} size={56} />
+          <CharacterSprite def={getCharacter('ririka')!} size={56} />
+        </div>
       </div>
 
       <div style={{ margin: '0 4px 14px' }}>

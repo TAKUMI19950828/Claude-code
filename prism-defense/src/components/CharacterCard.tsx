@@ -1,5 +1,6 @@
 import type { CharacterDef } from '../types/game';
 import { levelStats } from '../data/characters';
+import { CharacterSprite } from './CharacterSprite';
 
 interface Props {
   def: CharacterDef;
@@ -14,11 +15,7 @@ export function CharacterCard({ def, level, onClick }: Props) {
     <button className="char-card glass" onClick={onClick} style={{ '--accent': def.color } as React.CSSProperties}>
       <span className={`pill pill--${def.rarity} char-card__rarity`}>{def.rarity}</span>
       <div className="char-card__sprite" style={{ background: `radial-gradient(circle at 50% 35%, #fff, ${def.color}33)` }}>
-        {def.sprite ? (
-          <img className="char-card__img" src={def.sprite} alt={def.name} />
-        ) : (
-          <span className="char-card__emoji">{def.emoji}</span>
-        )}
+        <CharacterSprite def={def} className="char-card__img" />
       </div>
       <div className="char-card__name">{def.name}</div>
       <div className="char-card__role muted">{def.role}</div>

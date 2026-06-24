@@ -20,12 +20,11 @@
 }
 .home-hero__sub { font-size: 12px; font-weight: 800; color: #a48; opacity: 0.7; margin-bottom: 6px; }
 .home-hero__sd {
-  font-size: 96px;
   line-height: 1;
   margin: 10px 0;
   filter: drop-shadow(0 10px 14px rgba(255, 122, 182, 0.3));
 }
-.home-hero__friends { font-size: 34px; letter-spacing: 4px; }
+.home-hero__friends { display: flex; justify-content: center; gap: 16px; margin-top: 4px; }
 
 .home-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 4px; }
 .menu-card {

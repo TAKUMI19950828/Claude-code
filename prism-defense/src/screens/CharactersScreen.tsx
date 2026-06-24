@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { GameState } from '../hooks/useGameState';
 import { CHARACTERS, levelStats } from '../data/characters';
 import { CharacterCard } from '../components/CharacterCard';
+import { CharacterSprite } from '../components/CharacterSprite';
 import { Modal } from '../components/Modal';
 import { PrimaryButton } from '../components/PrimaryButton';
 
@@ -37,11 +38,7 @@ export function CharactersScreen({ game, onUpgrade }: Props) {
               <span className="muted" style={{ fontWeight: 800 }}>Lv.{openLevel}</span>
             </div>
             <div className="detail-sprite">
-              {openDef.sprite ? (
-                <img src={openDef.sprite} alt={openDef.name} style={{ width: 110, height: 110, objectFit: 'contain' }} />
-              ) : (
-                openDef.emoji
-              )}
+              <CharacterSprite def={openDef} size={120} />
             </div>
             <div style={{ textAlign: 'center', fontWeight: 900, fontSize: 20 }}>{openDef.name}</div>
             <div className="muted" style={{ textAlign: 'center', fontSize: 12, marginBottom: 10 }}>
