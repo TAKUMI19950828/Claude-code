@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="aGlow" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffd8ea"/>
+    </radialGradient>
+    <linearGradient id="aHair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff9ec9"/>
+      <stop offset="100%" stop-color="#ff5fa2"/>
+    </linearGradient>
+    <linearGradient id="aDress" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#ffd2e6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- soft backdrop -->
+  <circle cx="100" cy="100" r="96" fill="url(#aGlow)"/>
+
+  <!-- legs -->
+  <rect x="80" y="150" width="14" height="26" rx="7" fill="#ffe1ee"/>
+  <rect x="106" y="150" width="14" height="26" rx="7" fill="#ffe1ee"/>
+  <ellipse cx="87" cy="180" rx="12" ry="7" fill="#ff7ab6"/>
+  <ellipse cx="113" cy="180" rx="12" ry="7" fill="#ff7ab6"/>
+
+  <!-- body / dress -->
+  <path d="M70 120 Q100 108 130 120 L138 162 Q100 176 62 162 Z" fill="url(#aDress)" stroke="#ff9ec9" stroke-width="2"/>
+  <path d="M70 120 Q100 132 130 120 L132 134 Q100 146 68 134 Z" fill="#ff7ab6"/>
+
+  <!-- arms -->
+  <circle cx="62" cy="128" r="11" fill="#fff0f6"/>
+  <circle cx="138" cy="128" r="11" fill="#fff0f6"/>
+
+  <!-- back hair -->
+  <path d="M52 96 Q40 150 60 158 L74 130 Q66 110 70 92 Z" fill="url(#aHair)"/>
+  <path d="M148 96 Q160 150 140 158 L126 130 Q134 110 130 92 Z" fill="url(#aHair)"/>
+
+  <!-- head -->
+  <circle cx="100" cy="80" r="46" fill="#fff4ef"/>
+
+  <!-- front hair / bangs -->
+  <path d="M54 78 Q50 34 100 30 Q150 34 146 78 Q140 58 120 54 Q126 70 110 70 Q100 52 88 70 Q92 56 78 56 Q62 60 54 78 Z" fill="url(#aHair)"/>
+  <!-- side bangs -->
+  <path d="M54 78 Q52 100 60 110 L70 96 Q60 86 60 74 Z" fill="url(#aHair)"/>
+  <path d="M146 78 Q148 100 140 110 L130 96 Q140 86 140 74 Z" fill="url(#aHair)"/>
+
+  <!-- twin ribbons -->
+  <g fill="#ff5fa2">
+    <path d="M40 56 q-16 -10 -18 4 q-2 12 18 8 Z"/>
+    <path d="M40 56 q-12 10 -16 22 q14 4 18 -16 Z" opacity="0.85"/>
+    <circle cx="42" cy="60" r="5" fill="#ffd166"/>
+  </g>
+  <g fill="#ff5fa2">
+    <path d="M160 56 q16 -10 18 4 q2 12 -18 8 Z"/>
+    <path d="M160 56 q12 10 16 22 q-14 4 -18 -16 Z" opacity="0.85"/>
+    <circle cx="158" cy="60" r="5" fill="#ffd166"/>
+  </g>
+
+  <!-- eyes -->
+  <ellipse cx="84" cy="86" rx="8" ry="10" fill="#3a2d3a"/>
+  <ellipse cx="116" cy="86" rx="8" ry="10" fill="#3a2d3a"/>
+  <circle cx="86" cy="83" r="3" fill="#fff"/>
+  <circle cx="118" cy="83" r="3" fill="#fff"/>
+  <circle cx="82" cy="90" r="2" fill="#ff9ec9"/>
+  <circle cx="114" cy="90" r="2" fill="#ff9ec9"/>
+
+  <!-- blush -->
+  <ellipse cx="74" cy="98" rx="7" ry="4" fill="#ff9ec9" opacity="0.7"/>
+  <ellipse cx="126" cy="98" rx="7" ry="4" fill="#ff9ec9" opacity="0.7"/>
+
+  <!-- mouth -->
+  <path d="M94 100 Q100 108 106 100" fill="none" stroke="#c8506f" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- sparkle accent -->
+  <text x="150" y="40" font-size="20">✨</text>
+</svg>

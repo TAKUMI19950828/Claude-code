@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="rGlow" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e7dcff"/>
+    </radialGradient>
+    <linearGradient id="rHair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c7a8ff"/>
+      <stop offset="100%" stop-color="#9069e0"/>
+    </linearGradient>
+    <linearGradient id="rDress" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3ecff"/>
+      <stop offset="100%" stop-color="#cdb6ff"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="96" fill="url(#rGlow)"/>
+
+  <!-- legs -->
+  <rect x="80" y="150" width="14" height="26" rx="7" fill="#ece3ff"/>
+  <rect x="106" y="150" width="14" height="26" rx="7" fill="#ece3ff"/>
+  <ellipse cx="87" cy="180" rx="12" ry="7" fill="#7a5bd0"/>
+  <ellipse cx="113" cy="180" rx="12" ry="7" fill="#7a5bd0"/>
+
+  <!-- sturdy dress + small cape (defender) -->
+  <path d="M58 122 Q100 110 142 122 L150 166 Q100 180 50 166 Z" fill="#8e6fd8" opacity="0.55"/>
+  <path d="M70 120 Q100 108 130 120 L138 162 Q100 176 62 162 Z" fill="url(#rDress)" stroke="#c7a8ff" stroke-width="2"/>
+  <path d="M70 120 Q100 132 130 120 L132 134 Q100 146 68 134 Z" fill="#9069e0"/>
+
+  <!-- arms -->
+  <circle cx="62" cy="128" r="11" fill="#f3eeff"/>
+  <circle cx="138" cy="128" r="11" fill="#f3eeff"/>
+
+  <!-- back hair (straight, long) -->
+  <path d="M52 94 Q44 156 62 164 L74 130 Q66 112 68 92 Z" fill="url(#rHair)"/>
+  <path d="M148 94 Q156 156 138 164 L126 130 Q134 112 132 92 Z" fill="url(#rHair)"/>
+
+  <!-- head -->
+  <circle cx="100" cy="80" r="46" fill="#fff4ef"/>
+
+  <!-- straight cool bangs (blunt) -->
+  <path d="M54 80 Q52 34 100 30 Q148 34 146 80 L146 66 Q124 60 124 70 Q112 60 100 68 Q88 60 76 70 Q76 60 54 66 Z" fill="url(#rHair)"/>
+  <path d="M54 80 Q52 104 62 116 L72 98 Q60 88 60 74 Z" fill="url(#rHair)"/>
+  <path d="M146 80 Q148 104 138 116 L128 98 Q140 88 140 74 Z" fill="url(#rHair)"/>
+
+  <!-- crystal hair ornament -->
+  <path d="M100 40 l8 12 l-8 12 l-8 -12 Z" fill="#b388ff" stroke="#fff" stroke-width="1.5"/>
+
+  <!-- eyes (sharp / cool) -->
+  <path d="M76 82 l16 4" stroke="#3a2d4a" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <path d="M124 82 l-16 4" stroke="#3a2d4a" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <ellipse cx="84" cy="88" rx="7" ry="9" fill="#4a2d6a"/>
+  <ellipse cx="116" cy="88" rx="7" ry="9" fill="#4a2d6a"/>
+  <circle cx="86" cy="85" r="2.5" fill="#fff"/>
+  <circle cx="118" cy="85" r="2.5" fill="#fff"/>
+  <circle cx="83" cy="91" r="2" fill="#c7a8ff"/>
+  <circle cx="115" cy="91" r="2" fill="#c7a8ff"/>
+
+  <!-- blush -->
+  <ellipse cx="74" cy="99" rx="6" ry="3.5" fill="#c7a8ff" opacity="0.7"/>
+  <ellipse cx="126" cy="99" rx="6" ry="3.5" fill="#c7a8ff" opacity="0.7"/>
+
+  <!-- calm mouth -->
+  <path d="M96 102 L104 102" fill="none" stroke="#6a4a8a" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- shield emblem on chest -->
+  <path d="M100 128 l9 4 v6 q0 7 -9 11 q-9 -4 -9 -11 v-6 Z" fill="#ffd166" stroke="#fff" stroke-width="1.5"/>
+</svg>

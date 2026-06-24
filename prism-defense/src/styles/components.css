@@ -89,6 +89,7 @@
   box-shadow: inset 0 -4px 10px rgba(0,0,0,0.06);
 }
 .char-card__emoji { font-size: 42px; }
+.char-card__img { width: 100%; height: 100%; object-fit: contain; }
 .char-card__name { font-weight: 900; font-size: 15px; }
 .char-card__role { font-size: 10px; }
 .char-card__lv { font-size: 12px; font-weight: 800; color: var(--c-main); margin-top: 2px; }

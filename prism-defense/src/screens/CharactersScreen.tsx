@@ -36,7 +36,13 @@ export function CharactersScreen({ game, onUpgrade }: Props) {
               <span className={`pill pill--${openDef.rarity}`}>{openDef.rarity}</span>
               <span className="muted" style={{ fontWeight: 800 }}>Lv.{openLevel}</span>
             </div>
-            <div className="detail-sprite">{openDef.emoji}</div>
+            <div className="detail-sprite">
+              {openDef.sprite ? (
+                <img src={openDef.sprite} alt={openDef.name} style={{ width: 110, height: 110, objectFit: 'contain' }} />
+              ) : (
+                openDef.emoji
+              )}
+            </div>
             <div style={{ textAlign: 'center', fontWeight: 900, fontSize: 20 }}>{openDef.name}</div>
             <div className="muted" style={{ textAlign: 'center', fontSize: 12, marginBottom: 10 }}>
               {openDef.role}

@@ -20,6 +20,8 @@ export interface CharacterDef {
   role: string;
   rarity: Rarity;
   emoji: string;
+  /** Path to a sprite image (under /public). Falls back to `emoji` if absent. */
+  sprite?: string;
   /** Theme color used across cards / battle sprites. */
   color: string;
   cost: number;

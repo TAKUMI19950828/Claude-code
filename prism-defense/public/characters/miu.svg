@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="mGlow" cx="50%" cy="38%" r="62%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d6eeff"/>
+    </radialGradient>
+    <linearGradient id="mHair" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8dcff"/>
+      <stop offset="100%" stop-color="#5aa9ff"/>
+    </linearGradient>
+    <linearGradient id="mDress" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#cfe8ff"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="96" fill="url(#mGlow)"/>
+
+  <!-- legs -->
+  <rect x="80" y="150" width="14" height="26" rx="7" fill="#e3f1ff"/>
+  <rect x="106" y="150" width="14" height="26" rx="7" fill="#e3f1ff"/>
+  <ellipse cx="87" cy="180" rx="12" ry="7" fill="#7cc7ff"/>
+  <ellipse cx="113" cy="180" rx="12" ry="7" fill="#7cc7ff"/>
+
+  <!-- dress (longer, gentle) -->
+  <path d="M68 120 Q100 106 132 120 L140 164 Q100 178 60 164 Z" fill="url(#mDress)" stroke="#a8dcff" stroke-width="2"/>
+  <path d="M68 120 Q100 132 132 120 L134 136 Q100 148 66 136 Z" fill="#7cc7ff"/>
+
+  <!-- arms -->
+  <circle cx="60" cy="130" r="11" fill="#eef7ff"/>
+  <circle cx="140" cy="130" r="11" fill="#eef7ff"/>
+
+  <!-- long back hair -->
+  <path d="M50 92 Q34 160 56 170 L74 130 Q62 112 66 90 Z" fill="url(#mHair)"/>
+  <path d="M150 92 Q166 160 144 170 L126 130 Q138 112 134 90 Z" fill="url(#mHair)"/>
+
+  <!-- head -->
+  <circle cx="100" cy="80" r="46" fill="#fff4ef"/>
+
+  <!-- bangs (soft, parted) -->
+  <path d="M54 80 Q50 34 100 30 Q150 34 146 80 Q142 60 122 56 Q116 74 104 64 Q100 58 96 64 Q84 74 78 56 Q60 60 54 80 Z" fill="url(#mHair)"/>
+  <path d="M54 80 Q50 104 62 114 L72 98 Q60 88 60 76 Z" fill="url(#mHair)"/>
+  <path d="M146 80 Q150 104 138 114 L128 98 Q140 88 140 76 Z" fill="url(#mHair)"/>
+
+  <!-- hair clip -->
+  <circle cx="72" cy="58" r="5" fill="#ffd166"/>
+  <circle cx="72" cy="58" r="2" fill="#fff"/>
+
+  <!-- eyes (gentle / half) -->
+  <path d="M76 84 Q84 78 92 84" fill="none" stroke="#2d4a66" stroke-width="3" stroke-linecap="round"/>
+  <path d="M108 84 Q116 78 124 84" fill="none" stroke="#2d4a66" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="84" cy="89" rx="7" ry="9" fill="#3a4a6a"/>
+  <ellipse cx="116" cy="89" rx="7" ry="9" fill="#3a4a6a"/>
+  <circle cx="86" cy="86" r="2.5" fill="#fff"/>
+  <circle cx="118" cy="86" r="2.5" fill="#fff"/>
+
+  <!-- blush -->
+  <ellipse cx="74" cy="100" rx="7" ry="4" fill="#a8dcff" opacity="0.8"/>
+  <ellipse cx="126" cy="100" rx="7" ry="4" fill="#a8dcff" opacity="0.8"/>
+
+  <!-- mouth -->
+  <path d="M95 102 Q100 107 105 102" fill="none" stroke="#5a86a8" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- water droplet accent -->
+  <path d="M150 36 q-7 10 0 15 q7 -5 0 -15 Z" fill="#7cc7ff"/>
+</svg>
