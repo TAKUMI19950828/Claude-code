@@ -16,9 +16,20 @@ interface Props {
  * Drop a real PNG into public/characters/ and it is picked up automatically —
  * no code change needed.
  */
+/**
+ * Optional global map injected by the standalone single-file HTML build to
+ * supply inlined data-URI artwork (id -> dataURI). Undefined in normal builds.
+ */
+declare global {
+  interface Window {
+    __PRISM_SPRITES__?: Record<string, string>;
+  }
+}
+
 export function CharacterSprite({ def, size = '100%', className }: Props) {
-  // Build the candidate list once (png -> svg).
-  const sources = [`characters/${def.id}.png`, def.sprite].filter(Boolean) as string[];
+  const inlined = typeof window !== 'undefined' ? window.__PRISM_SPRITES__?.[def.id] : undefined;
+  // Build the candidate list once (inlined data URI -> png -> svg).
+  const sources = [inlined, `characters/${def.id}.png`, def.sprite].filter(Boolean) as string[];
   const [idx, setIdx] = useState(0);
 
   const dim = typeof size === 'number' ? `${size}px` : size;
