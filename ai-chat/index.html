@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>さくらとおしゃべり｜AI美少女会話アプリ</title>
+  <meta name="description" content="AIを搭載した美少女「さくら」とチャット形式でおしゃべりできるアプリ。なんでも気軽に聞いてね。" />
+  <meta name="theme-color" content="#ff9bb8" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 桜の花びらアニメーション -->
+  <div class="petals" aria-hidden="true"></div>
+
+  <div class="app">
+    <!-- ヘッダー -->
+    <header class="topbar">
+      <div class="topbar__brand">
+        <span class="topbar__logo" aria-hidden="true">🌸</span>
+        <div class="topbar__titles">
+          <h1 class="topbar__title">さくらとおしゃべり</h1>
+          <p class="topbar__subtitle">AI美少女会話アプリ</p>
+        </div>
+      </div>
+      <div class="topbar__actions">
+        <button id="clearBtn" class="iconbtn" type="button" title="会話をリセット" aria-label="会話をリセット">🗑️</button>
+        <button id="settingsBtn" class="iconbtn" type="button" title="設定" aria-label="設定">⚙️</button>
+      </div>
+    </header>
+
+    <!-- キャラクター立ち絵 -->
+    <section class="stage" aria-label="さくらの立ち絵">
+      <div class="stage__halo" aria-hidden="true"></div>
+      <div id="character" class="character" data-mood="idle">
+        <!-- 画像が無い場合のCSSフォールバック -->
+        <div class="character__fallback" aria-hidden="true">
+          <div class="character__face">
+            <span class="character__hair"></span>
+            <span class="character__eye character__eye--l"></span>
+            <span class="character__eye character__eye--r"></span>
+            <span class="character__blush character__blush--l"></span>
+            <span class="character__blush character__blush--r"></span>
+            <span class="character__mouth"></span>
+          </div>
+        </div>
+        <img id="characterImg" class="character__img" alt="さくら" />
+      </div>
+      <div id="speechBubble" class="speech" hidden></div>
+    </section>
+
+    <!-- チャット -->
+    <main id="chat" class="chat" aria-live="polite" aria-label="会話履歴"></main>
+
+    <!-- 入力欄 -->
+    <form id="composer" class="composer" autocomplete="off">
+      <textarea
+        id="input"
+        class="composer__input"
+        rows="1"
+        placeholder="さくらに話しかけてみよう…"
+        aria-label="メッセージ入力"
+      ></textarea>
+      <button id="sendBtn" class="composer__send" type="submit" aria-label="送信">
+        <span class="composer__send-icon" aria-hidden="true">➤</span>
+      </button>
+    </form>
+  </div>
+
+  <!-- 設定モーダル -->
+  <div id="settingsModal" class="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+      <div class="modal__head">
+        <h2 id="settingsTitle" class="modal__title">⚙️ 設定</h2>
+        <button class="iconbtn" type="button" data-close aria-label="閉じる">✕</button>
+      </div>
+
+      <label class="field">
+        <span class="field__label">Anthropic API キー</span>
+        <input id="apiKey" class="field__input" type="password" placeholder="sk-ant-..." spellcheck="false" />
+        <span class="field__hint">
+          キーはこの端末のブラウザ内（localStorage）にのみ保存され、Anthropic以外には送信されません。
+          <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">キーを取得</a>
+        </span>
+      </label>
+
+      <label class="field">
+        <span class="field__label">さくらのなまえ</span>
+        <input id="charName" class="field__input" type="text" placeholder="さくら" />
+      </label>
+
+      <label class="field">
+        <span class="field__label">性格・話し方（システムプロンプト）</span>
+        <textarea id="persona" class="field__input field__input--area" rows="5"></textarea>
+        <span class="field__hint">空欄にすると初期設定に戻ります。</span>
+      </label>
+
+      <div class="modal__foot">
+        <button id="resetPersona" class="btn btn--ghost" type="button">性格を初期化</button>
+        <button id="saveSettings" class="btn btn--primary" type="button">保存する</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
