@@ -1,5 +1,5 @@
 /* ===========================================================
-   さくらとおしゃべり — AI美少女会話アプリ
+   エルルとおしゃべり — AI美少女会話アプリ
    Anthropic Messages API をブラウザから直接呼び出す
    （ストリーミング / claude-opus-4-8）
    =========================================================== */
@@ -13,13 +13,13 @@ const MAX_TOKENS = 4096;
 const API_VERSION = "2023-06-01";
 
 const STORE = {
-  key: "sakura.apiKey",
-  name: "sakura.charName",
-  persona: "sakura.persona",
-  history: "sakura.history",
+  key: "eruru.apiKey",
+  name: "eruru.charName",
+  persona: "eruru.persona",
+  history: "eruru.history",
 };
 
-const DEFAULT_NAME = "さくら";
+const DEFAULT_NAME = "エルル";
 
 /** 既定のキャラクター設定（システムプロンプト） */
 function defaultPersona(name) {
@@ -38,7 +38,7 @@ function defaultPersona(name) {
     "・専門的な話題でも、むずかしい言葉をかみくだいて説明してあげてください。",
     "・健全で安心できる会話を心がけ、相手が嫌な気持ちにならないよう配慮します。",
     "",
-    "それでは、さくらとして自然に会話してね。",
+    `それでは、${name}として自然に会話してね。`,
   ].join("\n");
 }
 
@@ -67,18 +67,26 @@ let history = loadHistory();
 let busy = false;
 
 /* ---------- 立ち絵：気分に応じた画像 ----------
-   assets/ に下記のスプライト画像（任意）を置くと自動で表示されます。
-   無い場合は CSS で描いた顔のフォールバックが出ます。            */
+   assets/ のエルルのスプライト画像を気分に合わせて表示します。
+   talking は複数ポーズからランダムに選ばれます。
+   画像が読み込めない場合は CSS で描いた顔のフォールバックが出ます。 */
 const SPRITES = {
-  idle: "assets/sakura-idle.png",
-  thinking: "assets/sakura-thinking.png",
-  talking: "assets/sakura-talking.png",
+  idle: ["assets/story-eruru-sprite.png"],
+  thinking: ["assets/story-eruru-desperate.png"],
+  talking: [
+    "assets/story-eruru-smile.png",
+    "assets/story-eruru-tear-smile.png",
+    "assets/story-eruru-determined.png",
+  ],
 };
 const spriteCache = {};
 
+function pickSprite(list) { return list[Math.floor(Math.random() * list.length)]; }
+
 function setMood(mood) {
   characterEl.dataset.mood = mood;
-  const src = SPRITES[mood] || SPRITES.idle;
+  const list = SPRITES[mood] || SPRITES.idle;
+  const src = pickSprite(list);
   // 画像が存在するか一度だけ確認し、あれば差し替える
   if (spriteCache[src] === undefined) {
     const probe = new Image();
@@ -301,7 +309,7 @@ function saveSettings() {
 /* ---------- リセット ---------- */
 function clearChat() {
   if (!history.length) return;
-  if (!confirm("さくらとの会話をリセットする？")) return;
+  if (!confirm(`${getName()}との会話をリセットする？`)) return;
   history = [];
   saveHistory();
   chatEl.innerHTML = "";

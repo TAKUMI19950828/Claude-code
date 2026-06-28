@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>さくらとおしゃべり｜AI美少女会話アプリ</title>
-  <meta name="description" content="AIを搭載した美少女「さくら」とチャット形式でおしゃべりできるアプリ。なんでも気軽に聞いてね。" />
+  <title>エルルとおしゃべり｜AI美少女会話アプリ</title>
+  <meta name="description" content="AIを搭載した美少女「エルル」とチャット形式でおしゃべりできるアプリ。なんでも気軽に聞いてね。" />
   <meta name="theme-color" content="#ff9bb8" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,7 +21,7 @@
       <div class="topbar__brand">
         <span class="topbar__logo" aria-hidden="true">🌸</span>
         <div class="topbar__titles">
-          <h1 class="topbar__title">さくらとおしゃべり</h1>
+          <h1 class="topbar__title">エルルとおしゃべり</h1>
           <p class="topbar__subtitle">AI美少女会話アプリ</p>
         </div>
       </div>
@@ -32,7 +32,7 @@
     </header>
 
     <!-- キャラクター立ち絵 -->
-    <section class="stage" aria-label="さくらの立ち絵">
+    <section class="stage" aria-label="エルルの立ち絵">
       <div class="stage__halo" aria-hidden="true"></div>
       <div id="character" class="character" data-mood="idle">
         <!-- 画像が無い場合のCSSフォールバック -->
@@ -46,7 +46,7 @@
             <span class="character__mouth"></span>
           </div>
         </div>
-        <img id="characterImg" class="character__img" alt="さくら" />
+        <img id="characterImg" class="character__img" alt="エルル" />
       </div>
       <div id="speechBubble" class="speech" hidden></div>
     </section>
@@ -60,7 +60,7 @@
         id="input"
         class="composer__input"
         rows="1"
-        placeholder="さくらに話しかけてみよう…"
+        placeholder="エルルに話しかけてみよう…"
         aria-label="メッセージ入力"
       ></textarea>
       <button id="sendBtn" class="composer__send" type="submit" aria-label="送信">
@@ -88,8 +88,8 @@
       </label>
 
       <label class="field">
-        <span class="field__label">さくらのなまえ</span>
-        <input id="charName" class="field__input" type="text" placeholder="さくら" />
+        <span class="field__label">エルルのなまえ</span>
+        <input id="charName" class="field__input" type="text" placeholder="エルル" />
       </label>
 
       <label class="field">
