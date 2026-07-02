@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>将棋娘だいぼうけん！ - マリオ風アクションゲーム</title>
+  <meta name="description" content="将棋娘のエルル・ミウ・リリカと一緒に冒険するかわいい2Dアクションゲーム！" />
+  <link rel="icon" type="image/png" href="../favicon-32.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-wrap">
+    <!-- タイトル / キャラ選択画面 -->
+    <div id="screen-select" class="screen active">
+      <h1 class="game-title"><span>将棋娘</span>だいぼうけん！</h1>
+      <p class="game-subtitle">すきな女の子をえらんでね♪</p>
+      <div class="char-cards">
+        <button class="char-card" data-char="eruru">
+          <div class="char-portrait eruru"><img src="../assets/characters/eruru-full.webp" alt="エルル" /></div>
+          <div class="char-name">エルル</div>
+          <div class="char-desc">バランス型<br />🌸 さくらステージ</div>
+        </button>
+        <button class="char-card" data-char="miu">
+          <div class="char-portrait miu"><img src="../assets/characters/miu-full.webp" alt="ミウ" /></div>
+          <div class="char-name">ミウ</div>
+          <div class="char-desc">スピード型<br />🫧 うみかぜステージ</div>
+        </button>
+        <button class="char-card" data-char="ririka">
+          <div class="char-portrait ririka"><img src="../assets/characters/ririka-full.webp" alt="リリカ" /></div>
+          <div class="char-name">リリカ</div>
+          <div class="char-desc">ジャンプ型<br />🌙 ほしぞらステージ</div>
+        </button>
+      </div>
+      <p class="controls-hint">
+        ⌨️ ←→ / A D：移動　スペース / ↑ / W：ジャンプ<br />
+        📱 スマホは画面のボタンで操作できます
+      </p>
+      <a class="back-link" href="../index.html">← 将棋娘 公式サイトへもどる</a>
+    </div>
+
+    <!-- ゲーム画面 -->
+    <div id="screen-game" class="screen">
+      <canvas id="game-canvas" width="960" height="540"></canvas>
+      <div id="hud">
+        <span id="hud-char"></span>
+        <span id="hud-hearts">💗 × 0</span>
+        <span id="hud-lives">👧 × 3</span>
+        <span id="hud-stage"></span>
+      </div>
+      <!-- タッチ操作 -->
+      <div id="touch-controls">
+        <div class="touch-left">
+          <button id="btn-left" class="touch-btn">◀</button>
+          <button id="btn-right" class="touch-btn">▶</button>
+        </div>
+        <div class="touch-right">
+          <button id="btn-jump" class="touch-btn jump">ジャンプ</button>
+        </div>
+      </div>
+      <!-- オーバーレイ（クリア・ゲームオーバー） -->
+      <div id="overlay" class="hidden">
+        <div id="overlay-box">
+          <h2 id="overlay-title"></h2>
+          <p id="overlay-text"></p>
+          <div class="overlay-buttons">
+            <button id="btn-retry" class="overlay-btn">もういちど</button>
+            <button id="btn-select" class="overlay-btn alt">キャラをえらぶ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>

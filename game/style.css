@@ -1,0 +1,241 @@
+/* ============================================
+   将棋娘だいぼうけん！ スタイルシート
+   ============================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --pink: #f9a8c4;
+  --pink-deep: #ec6d9e;
+  --mint: #8fdcd4;
+  --mint-deep: #3cb8ac;
+  --purple: #c3a6ee;
+  --purple-deep: #8f6cc9;
+  --cream: #fff8f2;
+  --ink: #5b4a55;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Hiragino Maru Gothic ProN", "BIZ UDGothic", "Yu Gothic", "Meiryo", sans-serif;
+  background: linear-gradient(160deg, #ffe9f2 0%, #e8f7ff 55%, #f1eaff 100%);
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+#game-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.screen.active { display: flex; }
+
+/* ---------- キャラ選択画面 ---------- */
+#screen-select {
+  gap: 18px;
+  padding: 24px;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.game-title {
+  font-size: clamp(28px, 5.5vw, 52px);
+  color: var(--pink-deep);
+  text-shadow: 3px 3px 0 #fff, 5px 5px 0 rgba(236, 109, 158, .25);
+  letter-spacing: .06em;
+}
+.game-title span {
+  background: linear-gradient(90deg, var(--pink-deep), var(--mint-deep), var(--purple-deep));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.game-subtitle { font-size: clamp(14px, 2.4vw, 20px); }
+
+.char-cards {
+  display: flex;
+  gap: clamp(10px, 2.5vw, 28px);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.char-card {
+  width: clamp(140px, 24vw, 220px);
+  border: 3px solid #fff;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, .75);
+  box-shadow: 0 8px 24px rgba(236, 109, 158, .18);
+  cursor: pointer;
+  padding: 14px 10px 16px;
+  transition: transform .18s ease, box-shadow .18s ease;
+  font-family: inherit;
+  color: var(--ink);
+}
+.char-card:hover, .char-card:focus-visible {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(236, 109, 158, .3);
+  outline: none;
+}
+.char-card:active { transform: translateY(-2px) scale(1.0); }
+
+.char-portrait {
+  height: clamp(140px, 24vw, 220px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+  margin-bottom: 10px;
+}
+.char-portrait.eruru  { background: linear-gradient(180deg, #ffe3ee, #ffd1e3); }
+.char-portrait.miu    { background: linear-gradient(180deg, #dff8f5, #c5eef4); }
+.char-portrait.ririka { background: linear-gradient(180deg, #ece1ff, #dcc9f7); }
+.char-portrait img {
+  height: 200%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.char-name { font-size: clamp(16px, 2.6vw, 24px); font-weight: 700; }
+.char-card[data-char="eruru"]  .char-name { color: var(--pink-deep); }
+.char-card[data-char="miu"]    .char-name { color: var(--mint-deep); }
+.char-card[data-char="ririka"] .char-name { color: var(--purple-deep); }
+.char-desc { font-size: clamp(11px, 1.7vw, 14px); margin-top: 6px; line-height: 1.5; }
+
+.controls-hint { font-size: clamp(11px, 1.8vw, 14px); line-height: 1.7; opacity: .85; }
+
+.back-link {
+  color: var(--pink-deep);
+  font-size: 13px;
+  text-decoration: none;
+  border-bottom: 1px dashed currentColor;
+}
+.back-link:hover { opacity: .7; }
+
+/* ---------- ゲーム画面 ---------- */
+#screen-game { position: relative; }
+
+#game-canvas {
+  max-width: 100%;
+  max-height: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(91, 74, 85, .25);
+  background: #cdeefc;
+}
+
+#hud {
+  position: absolute;
+  top: max(10px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 18px;
+  background: rgba(255, 255, 255, .82);
+  border-radius: 999px;
+  padding: 8px 22px;
+  font-size: clamp(13px, 2.2vw, 17px);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(91, 74, 85, .18);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* ---------- タッチ操作 ---------- */
+#touch-controls {
+  position: absolute;
+  inset: auto 0 max(14px, env(safe-area-inset-bottom)) 0;
+  display: none;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+}
+body.touch #touch-controls { display: flex; }
+
+.touch-left, .touch-right { display: flex; gap: 14px; pointer-events: auto; }
+
+.touch-btn {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  background: rgba(249, 168, 196, .85);
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+  font-family: inherit;
+  box-shadow: 0 4px 12px rgba(91, 74, 85, .3);
+  user-select: none;
+  -webkit-user-select: none;
+}
+.touch-btn.jump {
+  width: 108px;
+  border-radius: 999px;
+  font-size: 18px;
+  background: rgba(143, 108, 201, .85);
+}
+.touch-btn:active { filter: brightness(1.12); transform: scale(.95); }
+
+/* ---------- オーバーレイ ---------- */
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(91, 74, 85, .35);
+  backdrop-filter: blur(3px);
+  border-radius: 14px;
+}
+#overlay.hidden { display: none; }
+
+#overlay-box {
+  background: var(--cream);
+  border: 4px solid var(--pink);
+  border-radius: 24px;
+  padding: 30px 44px;
+  text-align: center;
+  box-shadow: 0 12px 40px rgba(91, 74, 85, .35);
+  animation: pop .35s cubic-bezier(.34, 1.56, .64, 1);
+}
+@keyframes pop {
+  from { transform: scale(.6); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+
+#overlay-title { font-size: clamp(24px, 4.5vw, 38px); color: var(--pink-deep); margin-bottom: 10px; }
+#overlay-text { font-size: clamp(13px, 2.2vw, 17px); line-height: 1.8; margin-bottom: 20px; white-space: pre-line; }
+
+.overlay-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+.overlay-btn {
+  font-family: inherit;
+  font-size: clamp(14px, 2.2vw, 17px);
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--pink-deep), #ff8fb8);
+  border: none;
+  border-radius: 999px;
+  padding: 12px 30px;
+  cursor: pointer;
+  box-shadow: 0 5px 14px rgba(236, 109, 158, .4);
+  transition: transform .15s ease;
+}
+.overlay-btn.alt { background: linear-gradient(135deg, var(--purple-deep), #b494e6); box-shadow: 0 5px 14px rgba(143, 108, 201, .4); }
+.overlay-btn:hover { transform: translateY(-3px); }
+.overlay-btn:active { transform: translateY(0); }
