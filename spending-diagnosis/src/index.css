@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply font-rounded text-slate-800 antialiased;
+    margin: 0;
+    min-height: 100vh;
+    /* 元気なグラデーション背景 */
+    background:
+      radial-gradient(circle at 15% 15%, rgba(255, 111, 181, 0.35), transparent 45%),
+      radial-gradient(circle at 85% 20%, rgba(92, 200, 255, 0.35), transparent 45%),
+      radial-gradient(circle at 50% 100%, rgba(169, 112, 255, 0.35), transparent 55%),
+      linear-gradient(135deg, #fff6fb 0%, #f3f7ff 50%, #f0fffb 100%);
+    background-attachment: fixed;
+  }
+  /* iOS で数字入力時のズームを防ぐため 16px 以上を確保 */
+  input {
+    font-size: 16px;
+  }
+}
+
+@layer components {
+  .btn-pop {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-lg font-bold text-white shadow-pop transition active:scale-95;
+    background-image: linear-gradient(135deg, #ff6fb5, #a970ff 55%, #5cc8ff);
+    background-size: 200% 200%;
+  }
+  .btn-pop:hover {
+    @apply -translate-y-0.5;
+    animation: gradient-move 3s ease infinite;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border-2 border-pop-purple/40 bg-white/70 px-6 py-3 font-bold text-pop-purple transition active:scale-95 hover:bg-white;
+  }
+  .card {
+    @apply rounded-4xl bg-white/85 shadow-card backdrop-blur;
+  }
+}
+
+/* スライダーの見た目をポップに */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 12px;
+  border-radius: 9999px;
+  outline: none;
+}
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 4px solid #a970ff;
+  box-shadow: 0 4px 10px -2px rgba(169, 112, 255, 0.6);
+  cursor: pointer;
+}
+input[type='range']::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border: 4px solid #a970ff;
+  border-radius: 9999px;
+  background: #fff;
+  box-shadow: 0 4px 10px -2px rgba(169, 112, 255, 0.6);
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
